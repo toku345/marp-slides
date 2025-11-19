@@ -46,6 +46,29 @@ VS Code で「Marp for VS Code」拡張機能をインストールすると、�
 
 [Marp for VS Code](https://marketplace.visualstudio.com/items?itemName=marp-team.marp-vscode)
 
+## 学習リソース
+
+### Marp チュートリアルスライド
+
+Marp初心者向けの包括的なチュートリアルが含まれています：
+
+- **ファイル**: `slides/marp-tutorial.md`
+- **内容**: インストールから出力まで、Marpの使い方を26ページで解説
+- **対象**: Marpを初めて使う方
+
+チュートリアルをプレビューするには：
+
+```bash
+marp -s slides/
+# http://localhost:8080/marp-tutorial.md にアクセス
+```
+
+チュートリアルをPDFで出力するには：
+
+```bash
+marp slides/marp-tutorial.md -o dist/marp-tutorial.pdf
+```
+
 ## 基本的な使い方
 
 ### 1. スライドを作成
@@ -77,10 +100,13 @@ paginate: true
 プレビューサーバーを起動して、ブラウザで確認しながら編集：
 
 ```bash
-marp -s slides/presentation.md
+# ディレクトリ全体を監視
+marp -s slides/
 ```
 
-または VS Code の Marp 拡張機能でリアルタイムプレビュー。
+**注意**: `-s` (サーバーモード) はディレクトリを指定します。単一ファイルは指定できません。
+
+VS Code の Marp 拡張機能を使うとリアルタイムプレビューも可能です。
 
 ### 3. エクスポート
 
@@ -139,7 +165,24 @@ marp slides/*.md -o dist/
 
 # PDFで出力（ローカルファイル許可）
 marp slides/presentation.md --pdf --allow-local-files -o dist/presentation.pdf
+
+# npxで即座に実行（インストール不要）
+npx @marp-team/marp-cli@latest -s slides/
 ```
+
+## ベストプラクティス
+
+### コンテンツの最適化
+
+スライドの内容が画面に収まらない（見切れる）ことを防ぐために：
+
+1. **1スライド1アイデア**: 情報を詰め込みすぎない
+2. **コードブロックは簡潔に**: 長いコード例は分割または簡略化
+3. **数式はインライン優先**: ブロック数式 (`$$...$$`) は縦スペースを大きく取るため控えめに
+4. **コンテンツを分割**: 長い内容は複数スライドに分ける
+5. **プレビューで確認**: 必ずプレビューサーバーやスクリーンショットで各スライドを検証
+
+詳細は `.claude/skills/marp/skill.md` の「コンテンツ最適化とレイアウト」セクションを参照してください。
 
 ## テーマ
 
