@@ -1,0 +1,62 @@
+name: Marp Build Check
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Marp CLI
+        run: npm install -g @marp-team/marp-cli
+
+      - name: Build slides to HTML
+        run: |
+          mkdir -p dist
+          for file in slides/*.md; do
+            marp "$file" --html --allow-local-files -o "dist/$(basename "$file" .md).html"
+          done
+
+      - name: Build slides to PDF
+        run: |
+          for file in slides/*.md; do
+            marp "$file" --pdf --allow-local-files -o "dist/$(basename "$file" .md).pdf"
+          done
+
+      - name: Check for markdown files
+        run: |
+          if [ -z "$(find slides -name '*.md')" ]; then
+            echo "Error: No markdown files found in slides directory"
+            exit 1
+          fi
+          echo "Found markdown files:"
+          find slides -name '*.md'
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: marp-slides
+          path: dist/
+          retention-days: 30
+
+      - name: Build summary
+        run: |
+          echo "## Build Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Successfully built the following slides:" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          for file in dist/*.html; do
+            echo "- $(basename $file)" >> $GITHUB_STEP_SUMMARY
+          done
