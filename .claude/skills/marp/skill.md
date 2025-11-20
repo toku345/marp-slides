@@ -14,14 +14,15 @@ Marp は、マークダウン形式でプレゼンテーションスライドを
 
 ## セットアップ
 
-### Marp CLI のインストール
+### プロジェクトのセットアップ
 
 ```bash
-# npm を使用
-npm install -g @marp-team/marp-cli
+# 依存関係をインストール
+bun install
 
-# または Yarn を使用
-yarn global add @marp-team/marp-cli
+# スクリプトの実行
+bun run preview   # プレビューサーバー起動
+bun run build     # スライドをビルド
 ```
 
 ### VS Code 拡張機能
@@ -428,16 +429,16 @@ marp -s slides/
 # （Playwright MCP などのツールを活用）
 ```
 
-### npx での即時利用
+### bunx での即時利用
 
 グローバルインストール不要で即座に試せます：
 
 ```bash
 # インストールせずに実行
-npx @marp-team/marp-cli@latest slide.md
+bunx @marp-team/marp-cli@latest slide.md
 
 # プレビューサーバーも可能
-npx @marp-team/marp-cli@latest -s slides/
+bunx @marp-team/marp-cli@latest -s slides/
 ```
 
 **注意**: `-s` (サーバーモード) はディレクトリを指定する必要があります。単一ファイルは指定できません。
@@ -516,8 +517,8 @@ html: true
 
 ## 典型的なワークフロー
 
-1. Marp CLI または VS Code拡張をインストール
+1. プロジェクトのセットアップ（`bun install`）
 2. マークダウンファイルを作成（例: `slides/presentation.md`）
-3. プレビューサーバーで確認しながら編集（`marp -s slides/presentation.md`）
+3. プレビューサーバーで確認しながら編集（`bun run preview`）
 4. 必要に応じてカスタムテーマを作成
-5. 最終版をHTML/PDF/PPTXにエクスポート
+5. 最終版をHTML/PDF/PPTXにエクスポート（`bun run build`）

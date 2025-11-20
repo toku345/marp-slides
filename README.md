@@ -28,16 +28,13 @@ marp-the-slide/
 
 ### 前提条件
 
-- Node.js (npm または Yarn)
+- Bun (>= 1.3.2)
 
-### Marp CLI のインストール
+### プロジェクトのセットアップ
 
 ```bash
-# npm を使用
-npm install -g @marp-team/marp-cli
-
-# または Yarn を使用
-yarn global add @marp-team/marp-cli
+# 依存関係をインストール
+bun install
 ```
 
 ### VS Code 拡張機能（推奨）
@@ -59,14 +56,14 @@ Marp初心者向けの包括的なチュートリアルが含まれています�
 チュートリアルをプレビューするには：
 
 ```bash
-marp -s slides/
+bun run preview
 # http://localhost:8080/marp-tutorial.md にアクセス
 ```
 
 チュートリアルをPDFで出力するには：
 
 ```bash
-marp slides/marp-tutorial.md -o dist/marp-tutorial.pdf
+bun run build:pdf
 ```
 
 ## 基本的な使い方
@@ -100,11 +97,9 @@ paginate: true
 プレビューサーバーを起動して、ブラウザで確認しながら編集：
 
 ```bash
-# ディレクトリ全体を監視
-marp -s slides/
+# プレビューサーバー起動
+bun run preview
 ```
-
-**注意**: `-s` (サーバーモード) はディレクトリを指定します。単一ファイルは指定できません。
 
 VS Code の Marp 拡張機能を使うとリアルタイムプレビューも可能です。
 
@@ -113,14 +108,17 @@ VS Code の Marp 拡張機能を使うとリアルタイムプレビューも可
 完成したスライドを各種形式でエクスポート：
 
 ```bash
-# HTML出力
-marp slides/presentation.md -o dist/presentation.html
+# すべての形式でビルド（HTML + PDF）
+bun run build
 
-# PDF出力
-marp slides/presentation.md -o dist/presentation.pdf
+# HTML のみ
+bun run build:html
 
-# PowerPoint出力
-marp slides/presentation.md -o dist/presentation.pptx
+# PDF のみ
+bun run build:pdf
+
+# PowerPoint のみ
+bun run build:pptx
 ```
 
 ## Claude Code でのスキル活用
@@ -155,19 +153,25 @@ Claude Code が `marp` スキルを自動的に読み込み、詳細なガイド
 
 ```bash
 # プレビューサーバー起動
-marp -s slides/
+bun run preview
 
-# ファイル監視モード（変更を自動検出）
-marp -w slides/presentation.md
+# すべての形式でビルド
+bun run build
 
-# カレントディレクトリの全.mdファイルをHTML出力
-marp slides/*.md -o dist/
+# HTML のみ
+bun run build:html
 
-# PDFで出力（ローカルファイル許可）
-marp slides/presentation.md --pdf --allow-local-files -o dist/presentation.pdf
+# PDF のみ
+bun run build:pdf
 
-# npxで即座に実行（インストール不要）
-npx @marp-team/marp-cli@latest -s slides/
+# PowerPoint のみ
+bun run build:pptx
+
+# マークダウンのリントチェック
+bun run lint
+
+# bunx で即座に実行（インストール不要）
+bunx @marp-team/marp-cli@latest -s slides/
 ```
 
 ## ベストプラクティス

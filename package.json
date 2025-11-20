@@ -1,0 +1,34 @@
+{
+  "name": "marp-slides",
+  "version": "1.0.0",
+  "description": "Markdown-based presentation slides with Marp",
+  "private": true,
+  "scripts": {
+    "build": "marp slides/*.md -o dist/ --html --pdf --allow-local-files",
+    "preview": "marp -s slides/",
+    "build:html": "marp slides/*.md -o dist/ --html --allow-local-files",
+    "build:pdf": "marp slides/*.md -o dist/ --pdf --allow-local-files",
+    "build:pptx": "marp slides/*.md -o dist/ --pptx --allow-local-files",
+    "lint": "markdownlint slides/**/*.md",
+    "lint:fix": "markdownlint --fix slides/**/*.md"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/toku345/marp-slides.git"
+  },
+  "keywords": [
+    "marp",
+    "presentation",
+    "slides",
+    "markdown"
+  ],
+  "author": "toku345",
+  "license": "MIT",
+  "engines": {
+    "bun": ">=1.3.2"
+  },
+  "devDependencies": {
+    "@marp-team/marp-cli": "^3.4.0",
+    "markdownlint-cli": "^0.39.0"
+  }
+}
