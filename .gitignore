@@ -1,0 +1,28 @@
+# 環境設定（ローカル固有）
+.envrc
+
+# Playwright一時ファイル
+.playwright-mcp/
+
+# Node modules
+node_modules/
+
+# ビルド出力
+dist/
+
+# ログファイル
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS固有ファイル
+.DS_Store
+Thumbs.db
+
+# エディタ設定（必要に応じて調整）
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
