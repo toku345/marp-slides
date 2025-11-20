@@ -23,10 +23,10 @@ jobs:
       - name: Build slides to HTML
         run: |
           mkdir -p dist
-          marp slides/ --html --allow-local-files --output dist/
+          marp slides/*.md --html --allow-local-files -o dist/
 
       - name: Build slides to PDF
-        run: marp slides/ --pdf --allow-local-files --output dist/
+        run: marp slides/*.md --pdf --allow-local-files -o dist/
 
       - name: Check for markdown files
         run: |
