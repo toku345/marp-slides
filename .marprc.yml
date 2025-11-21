@@ -4,25 +4,8 @@
 # Allow local file access for images and assets
 allowLocalFiles: true
 
-# Input directory
-inputDir: ./slides
-
-# Output directory
-output: ./dist
-
 # Theme directory
 themeSet: ./themes
 
 # Enable HTML tags in markdown
 html: true
-
-# Default options for all conversions
-options:
-  # Enable HTML output
-  html: true
-
-  # Enable PDF output
-  pdf: true
-
-  # Enable PPTX output
-  pptx: true
