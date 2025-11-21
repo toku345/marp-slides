@@ -36,9 +36,9 @@ marp-the-slide/
 
 ## クイックスタート
 
-1. Marp CLI をインストール: `npm install -g @marp-team/marp-cli`
+1. 依存関係をインストール: `bun install`
 2. スライドを作成: `slides/presentation.md`
-3. プレビュー: `marp -s slides/presentation.md`
-4. 出力: `marp slides/presentation.md -o dist/presentation.pdf`
+3. プレビュー: `bun run preview`
+4. 出力: `bun run build`
 
 詳細な使い方は `marp` スキルを参照してください。

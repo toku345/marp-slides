@@ -1,0 +1,11 @@
+# Marp CLI Configuration
+# https://github.com/marp-team/marp-cli
+
+# Allow local file access for images and assets
+allowLocalFiles: true
+
+# Theme directory
+themeSet: ./themes
+
+# Enable HTML tags in markdown
+html: true
