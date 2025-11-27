@@ -14,7 +14,7 @@ section {
 }
 </style>
 
-![bg left:50% contain](https://marp.app/assets/marp.svg)
+![bg left:48% 90%](https://marp.app/assets/marp.svg)
 
 # Marp入門
 
@@ -139,45 +139,43 @@ backgroundColor: #fff         # 背景色
 
 ---
 
-## 画像の配置
+## 通常の画像
 
-### 通常の画像
-
-```markdown
-![](image.png)
-![width:600px](image.png)
-![height:400px](image.png)
-![w:600 h:400](image.png)
-```
-
-### 背景画像
+![height:250px](https://marp.app/assets/marp.svg)
 
 ```markdown
-![bg](background.jpg)
-![bg right](image.jpg)          # 右半分に配置
-![bg left:40%](image.jpg)       # 左40%に配置
-![bg fit](image.jpg)            # フィット表示
+![](image.png)              # そのまま
+![width:600px](image.png)   # 幅指定
+![height:250px](image.png)  # 高さ指定
+![w:300 h:200](image.png)   # 両方指定
 ```
 
 ---
 
-## 画像配置の実践例
+<!-- _backgroundImage: url('https://marp.app/assets/hero-background.svg') -->
 
-### 分割レイアウト（テキスト + 画像）
+## 背景画像（全体背景）
+
+### backgroundImage ディレクティブ
 
 ```markdown
-![bg right:40%](diagram.png)
-
-## 左側にテキスト
-
-- ポイント1
-- ポイント2
-- ポイント3
-
-右40%に画像が表示されます
+<!-- _backgroundImage: url('image.svg') -->
 ```
 
-**用途**: 製品紹介、図解説明、ビフォーアフター
+- スライド全体の背景に画像を設定
+- パターンやグラデーションに最適
+
+---
+
+## 背景画像（分割レイアウト）
+
+![bg contain right:40% 80%](./images/happy-sliding.png)
+
+### bg キーワード
+
+- `![bg right:40%]` で右40%に配置
+- `![bg left:50%]` で左側に配置
+- `contain` や `fit` でサイズ調整
 
 ---
 
@@ -298,4 +296,3 @@ marp slide.md -o output.pptx
 <!-- fit -->
 ## さあ、Marpで
 ## スライドを作成しよう！
-（分割レイアウトと画像配置の例です）
