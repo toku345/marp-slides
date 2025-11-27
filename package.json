@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "build": "marp -I slides/ -o dist/ --html --pdf --allow-local-files",
-    "preview": "marp -s slides/",
+    "preview": "marp -s . --allow-local-files",
     "build:html": "marp -I slides/ -o dist/ --html --allow-local-files",
     "build:pdf": "marp -I slides/ -o dist/ --pdf --allow-local-files",
     "build:pptx": "marp -I slides/ -o dist/ --pptx --allow-local-files",

@@ -651,7 +651,7 @@ theme: uncover
 
 <!-- _class: lead -->
 
-![bg fit](../assets/images/happy-sliding.png)
+![bg fit](/assets/images/happy-sliding.png)
 
 ---
 
