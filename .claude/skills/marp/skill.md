@@ -251,9 +251,15 @@ marp -w slide.md
 ### プレビューサーバー
 
 ```bash
-marp -s slide.md
-marp -s .  # カレントディレクトリ内の全.mdファイル
+# プロジェクトルートから起動（推奨）
+marp -s . --allow-local-files
+
+# アクセス URL 例
+# http://localhost:8080/slides/presentation.md
 ```
+
+**重要**: サーバーはルートディレクトリとそのサブディレクトリのファイルのみを配信します。
+画像を正しく表示するには、プロジェクトルートから起動してください。
 
 ## 設定ファイル
 
@@ -323,13 +329,32 @@ project/
 ├── .marprc.yml          # Marp設定ファイル
 ├── slides/              # スライドファイル
 │   ├── presentation1.md
-│   └── presentation2.md
+│   ├── presentation2.md
+│   └── images/          # スライド用画像（重要！）
+│       └── diagram.png
 ├── themes/              # カスタムテーマ
 │   └── custom.css
-├── assets/              # 画像などのリソース
-│   └── images/
+├── assets/              # その他のリソース
 └── dist/                # 出力先ディレクトリ
 ```
+
+### 画像配置のベストプラクティス
+
+**スライドで使用する画像は `slides/images/` に配置することを強く推奨します。**
+
+この配置により：
+- CLI プレビュー (`marp -s .`) で正しく表示される
+- VS Code Marp 拡張機能のプレビューでも正しく表示される
+- 相対パス `./images/filename.png` で参照可能
+
+```markdown
+<!-- スライド内での画像参照 -->
+![](./images/diagram.png)
+![bg right:40%](./images/photo.jpg)
+```
+
+**注意**: `assets/images/` など他の場所に配置すると、CLI サーバーモードで画像が表示されない問題が発生します。
+詳細は [GitHub Issue #163](https://github.com/marp-team/marp-cli/issues/163) を参照。
 
 ## ベストプラクティス
 
@@ -493,8 +518,26 @@ html: true
 
 ### 画像が表示されない
 
-- 相対パスを確認
+#### CLI プレビューで表示されない場合
+
+Marp CLI のサーバーモード (`marp -s`) は、サーバールートディレクトリとそのサブディレクトリ内のファイルのみを配信します。
+
+**解決策**:
+1. 画像を `slides/images/` に配置
+2. サーバーをプロジェクトルートから起動: `marp -s . --allow-local-files`
+3. 相対パスで参照: `./images/filename.png`
+
+参考: [GitHub Issue #163](https://github.com/marp-team/marp-cli/issues/163)
+
+#### VS Code プレビューで表示されない場合
+
+- 絶対パス（`/assets/images/...`）は VS Code では動作しません
+- 相対パス（`./images/...`）を使用してください
+
+#### 一般的な対処法
+
 - `.marprc.yml` で `allowLocalFiles: true` を設定
+- `--allow-local-files` フラグを使用
 
 ### テーマが適用されない
 
@@ -519,6 +562,8 @@ html: true
 
 1. プロジェクトのセットアップ（`bun install`）
 2. マークダウンファイルを作成（例: `slides/presentation.md`）
-3. プレビューサーバーで確認しながら編集（`bun run preview`）
-4. 必要に応じてカスタムテーマを作成
-5. 最終版をHTML/PDF/PPTXにエクスポート（`bun run build`）
+3. 画像は `slides/images/` に配置し、`./images/filename.png` で参照
+4. プレビューサーバーで確認しながら編集
+   - `bun run preview` → `http://localhost:8080/slides/presentation.md`
+5. 必要に応じてカスタムテーマを作成
+6. 最終版をHTML/PDF/PPTXにエクスポート（`bun run build`）
