@@ -3,12 +3,22 @@ marp: true
 theme: gaia
 paginate: true
 backgroundColor: #fff
+html: true
 ---
 
-<!-- _class: lead -->
-# marpの使い方
+<style scoped>
+section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+</style>
 
-未経験者のための最初のスライド作成ガイド
+![bg left:50% contain](https://marp.app/assets/marp.svg)
+
+# Marp入門
+
+toku345
 
 ---
 
@@ -20,33 +30,6 @@ backgroundColor: #fff
 - PowerPointのような複雑なツールは不要
 - シンプルなマークダウンでプロフェッショナルなスライド
 - バージョン管理（Git）が容易
-
----
-
-## Marpで実現できること
-
-### ビジネスプレゼンテーション
-
-- シンプルで洗練されたスライド
-- 会議・提案資料・レポート
-
-### 技術発表
-
-- コードハイライト対応
-- 数式表示（KaTeX）
-- ライブデモ・チュートリアル
-
-### 教育コンテンツ
-
-- このスライド自体がMarpで作成されています！
-
----
-
-## 主要コンポーネント
-
-- **Marp Core**: マークダウンをスライドHTMLに変換するエンジン
-- **Marp CLI**: コマンドラインからスライドをビルド・エクスポート
-- **Marp for VS Code**: リアルタイムプレビュー機能を持つ拡張機能
 
 ---
 
@@ -65,28 +48,6 @@ npm install -g @marp-team/marp-cli
 ```
 
 **必須要件**: Node.js v18以上
-
----
-
-## その他のインストール方法
-
-### Homebrew（macOS/Linux）
-
-```bash
-brew install marp-cli
-```
-
-### Scoop（Windows）
-
-```bash
-scoop install marp
-```
-
-### Docker
-
-```bash
-docker pull marpteam/marp-cli
-```
 
 ---
 
@@ -128,28 +89,6 @@ backgroundColor: #fff         # 背景色
 
 ---
 
-## スライドの区切り
-
-**3つのハイフン** で新しいスライドを開始：
-
-```markdown
----
-marp: true
----
-
-# 1枚目のスライド
-
----
-
-# 2枚目のスライド
-
----
-
-# 3枚目のスライド
-```
-
----
-
 ## ディレクティブ（個別スライド設定）
 
 特定のスライドだけに設定を適用：
@@ -183,87 +122,20 @@ marp: true
 
 ---
 
-## テーマの使い分け実例
-
-```markdown
----
-theme: default  # ビジネス・公式文書向け
----
-```
-
-```markdown
----
-theme: gaia  # プレゼン・デモ向け
----
-```
-
-```markdown
----
-theme: uncover  # ミニマル・詩的な表現向け
----
-```
-
-**Tip**: 同じコンテンツでもテーマを変えるだけで印象が大きく変わります
-
----
-
-## レイアウトクラス
-
-### lead クラス
-
-中央揃え（タイトルスライド向け）
-
-```markdown
-<!-- _class: lead -->
-# 中央揃えのタイトル
-```
-
----
-
 <!-- _class: lead -->
 
-# これが lead クラスの実例
+# lead クラス
 
-中央揃えで大きく表示されます
-
----
-
-## レイアウトクラス
-
-### invert クラス
-
-背景と文字色を反転
-
-```markdown
-<!-- _class: invert -->
-# 暗い背景に明るい文字
-```
+`<!-- _class: lead -->` で中央揃え
 
 ---
 
 <!-- _class: invert -->
 <!-- _backgroundColor: #2d3436 -->
 
-# これが invert クラスの実例
+# invert クラス
 
-背景が暗く、文字が明るく表示されます
-
----
-
-## クラスの組み合わせ
-
-複数のクラスを同時に適用可能：
-
-```markdown
-<!-- _class: lead invert -->
-# 中央揃え + 反転
-```
-
-**用途例**:
-
-- セクション区切り
-- 強調したいメッセージ
-- 休憩スライド
+`<!-- _class: invert -->` で色反転
 
 ---
 
@@ -330,90 +202,59 @@ hello("Marp")
 
 ---
 
-## 便利な機能
+## 高度なレイアウト（2カラム実例）
 
-### 自動サイズ調整
-
-```markdown
-<!-- fit -->
-# 長いタイトルを自動で画面に合わせる
-```
-
-### 数式（KaTeX）
-
-インライン数式: $E = mc^2$
-
----
-
-## 高度なレイアウトテクニック
-
-### 2カラムレイアウト
-
-HTML要素を使って自由なレイアウトが可能：
-
-```markdown
 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
 
 <div>
 
-## 左カラム
+### 左カラム
 
-- ポイント1
-- ポイント2
+- HTML + CSSで自由配置
+- `display: grid` を活用
 
 </div>
 
 <div>
 
-## 右カラム
+### 右カラム
 
-- ポイント3
-- ポイント4
+- 比較表示に最適
+- 製品紹介・ビフォーアフター
+
+</div>
 
 </div>
 
-</div>
-```
-
 ---
 
-## 実践的なレイアウトパターン
+## CSSスタイリング実例
 
-### パターン1: ヘッダー付きスライド
+<style scoped>
+.highlight { background: linear-gradient(transparent 60%, #ffeb3b 60%); }
+.big { font-size: 1.5em; font-weight: bold; }
+.accent { color: #e91e63; }
+</style>
 
-```markdown
----
-header: 'プロジェクト名 | 2024-11-21'
-footer: 'Confidential'
----
-```
+Marpでは **インラインCSS** と **scoped style** が使えます
 
-### パターン2: セクション区切り
+### こんな装飾が可能
 
-```markdown
-<!-- _class: lead invert -->
-# 第2章
-新しいセクションの開始
-```
+- <span class="highlight">マーカー風ハイライト</span>
+- <span class="big">サイズ変更</span>
+- <span class="accent">アクセントカラー</span>
 
 ---
 
 ## Marp CLIの基本コマンド
 
-### プレビュー（推奨）
+### プレビュー
 
 ```bash
-# プロジェクトルートからサーバー起動（画像表示に必要）
+# サーバー起動
 marp -s . --allow-local-files
 
 # ブラウザで http://localhost:8080/slides/file.md にアクセス
-```
-
-### ウォッチモード
-
-```bash
-# ファイル変更を監視して自動更新
-marp -w slide.md
 ```
 
 ---
@@ -440,208 +281,6 @@ marp slide.md -o output.pptx
 
 ---
 
-## プロジェクト推奨構造
-
-```
-project/
-├── .marprc.yml          # Marp設定ファイル
-├── slides/              # スライドファイル
-│   ├── presentation1.md
-│   ├── presentation2.md
-│   └── images/          # スライド用画像（重要！）
-├── themes/              # カスタムテーマ（任意）
-│   └── custom.css
-└── dist/                # 出力先
-```
-
-**Tip**: 画像は `slides/images/` に配置し `./images/file.png` で参照
-
----
-
-## .marprc.yml 設定例
-
-プロジェクトルートに配置：
-
-```yaml
-allowLocalFiles: true
-html: true
-inputDir: ./slides
-output: ./dist
-pdf: true
-theme: ./themes/custom.css
-themeSet: ./themes
-```
-
-これで、コマンド実行時の引数を省略できます
-
----
-
-## トラブルシューティング
-
-### 画像が表示されない
-
-**CLI プレビューの場合**:
-
-1. 画像を `slides/images/` に配置
-2. 相対パス `./images/file.png` で参照
-3. プロジェクトルートから `marp -s . --allow-local-files`
-
-**VS Code プレビューの場合**:
-
-- 絶対パス（`/images/...`）は使わない
-- 相対パス（`./images/...`）を使用
-
-### PDF出力が失敗する
-
-```bash
-marp --allow-local-files slide.md --pdf
-```
-
----
-
-## 初心者向けワークフロー
-
-### 1. インストール
-```bash
-npm install -g @marp-team/marp-cli
-```
-
-### 2. ファイル作成
-`slides/presentation.md` を作成
-
-### 3. 編集しながらプレビュー
-```bash
-marp -s . --allow-local-files
-```
-
----
-
-## 初心者向けワークフロー
-
-### 4. ブラウザで確認
-`http://localhost:8080/slides/presentation.md` にアクセス
-
-### 5. 最終出力
-```bash
-marp slides/presentation.md -o dist/presentation.pdf
-```
-
----
-
-## 最初の5分で試すこと
-
-### 1. サンプルファイル作成
-
-`slides/first.md` を作成してMarpの基本構文を試す
-
-### 2. プレビュー
-
-```bash
-marp -s . --allow-local-files
-# http://localhost:8080/slides/first.md にアクセス
-```
-
-### 3. PDF出力
-
-```bash
-marp slides/first.md -o first.pdf --allow-local-files
-```
-
----
-
-## ベストプラクティス
-
-1. **1スライド1アイデア**: シンプルに保つ
-2. **画像を活用**: `![bg]` で視覚的魅力向上
-3. **一貫性**: テーマとレイアウトを統一
-4. **ページ番号**: `paginate: true` で進行表示
-5. **バージョン管理**: マークダウンはGit管理が容易
-6. **プレビュー確認**: 編集中は常にプレビュー
-
----
-
-## サンプルスライド集
-
-### テンプレート1: ビジネスプレゼン
-
-```markdown
----
-marp: true
-theme: default
-paginate: true
-header: '会社名 | プロジェクト名'
-footer: '© 2024 Company Name'
----
-
-<!-- _class: lead -->
-# プロジェクト提案書
-
-2024年度 新規事業計画
-
----
-
-## 背景と課題
-
-### 現状の課題
-- 課題1
-- 課題2
-```
-
----
-
-## サンプルスライド集
-
-### テンプレート2: 技術発表
-
-```markdown
----
-marp: true
-theme: gaia
-paginate: true
----
-
-<!-- _class: lead -->
-# 技術解説
-## WebアプリケーションとMarp
-
----
-
-## コード例
-
-```javascript
-function createSlide() {
-  return "Easy!";
-}
-```
-```
-
----
-
-## サンプルスライド集
-
-### テンプレート3: 教育コンテンツ
-
-```markdown
----
-marp: true
-theme: uncover
----
-
-<!-- _class: lead -->
-# レッスン1
-基礎から学ぶ
-
----
-
-## 学習目標
-
-1. 概念を理解する
-2. 実践で使えるようになる
-3. 応用力を身につける
-```
-
----
-
 ## 参考リンク
 
 - 公式サイト: https://marp.app/
@@ -654,14 +293,9 @@ theme: uncover
 
 <!-- _class: lead -->
 
-![bg fit](./images/happy-sliding.png)
+![bg contain right:35% 80%](./images/happy-sliding.png)
 
----
-
-<!-- _class: lead -->
-
-## さあ、始めましょう！
-
-Marpで素晴らしいプレゼンテーションを作成してください
-
-**Happy Sliding!**
+<!-- fit -->
+## さあ、Marpで
+## スライドを作成しよう！
+（分割レイアウトと画像配置の例です）
