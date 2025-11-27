@@ -5,15 +5,24 @@
 ## プロジェクト構成
 
 ```
-marp-the-slide/
+marp-slides/
 ├── .claude/
 │   └── skills/
 │       └── marp/         # Marpスキル（構文、CLI、カスタマイズ等）
 ├── slides/               # スライドファイル
+│   └── images/           # スライド用画像（CLI・VS Code両対応）
 ├── themes/               # カスタムテーマ（任意）
-├── assets/               # 画像などのリソース
+├── assets/               # その他のリソース
 └── dist/                 # 出力先（HTML/PDF/PPTX）
 ```
+
+### 画像配置の重要な注意点
+
+スライドで使用する画像は **`slides/images/`** に配置してください。
+
+- `./images/filename.png` のような相対パスで参照可能
+- CLI プレビュー (`bun run preview`) と VS Code プレビューの両方で動作
+- 詳細は [GitHub Issue #163](https://github.com/marp-team/marp-cli/issues/163) を参照
 
 ## スキル
 
@@ -38,7 +47,8 @@ marp-the-slide/
 
 1. 依存関係をインストール: `bun install`
 2. スライドを作成: `slides/presentation.md`
-3. プレビュー: `bun run preview`
-4. 出力: `bun run build`
+3. 画像は `slides/images/` に配置
+4. プレビュー: `bun run preview` → `http://localhost:8080/slides/presentation.md`
+5. 出力: `bun run build`
 
 詳細な使い方は `marp` スキルを参照してください。

@@ -13,16 +13,26 @@
 ## プロジェクト構成
 
 ```
-marp-the-slide/
+marp-slides/
 ├── .claude/
 │   └── skills/
 │       └── marp/         # Claude Code用Marpスキル
 ├── slides/               # スライドファイル（.md）
+│   └── images/           # スライド用画像（CLI・VS Code両対応）
 ├── themes/               # カスタムテーマ（.css）
-├── assets/               # 画像などのリソース
-│   └── images/
+├── assets/               # その他のリソース
 └── dist/                 # 出力先（HTML/PDF/PPTX）
 ```
+
+### 画像配置について
+
+スライドで使用する画像は **`slides/images/`** に配置してください。この配置により：
+
+- CLI プレビュー (`bun run preview`) で正しく表示される
+- VS Code Marp 拡張機能のプレビューでも正しく表示される
+- 相対パス `./images/filename.png` で参照可能
+
+詳細は [GitHub Issue #163](https://github.com/marp-team/marp-cli/issues/163) を参照。
 
 ## セットアップ
 
@@ -57,7 +67,7 @@ Marp初心者向けの包括的なチュートリアルが含まれています�
 
 ```bash
 bun run preview
-# http://localhost:8080/marp-tutorial.md にアクセス
+# http://localhost:8080/slides/marp-tutorial.md にアクセス
 ```
 
 チュートリアルをPDFで出力するには：
@@ -208,8 +218,18 @@ Marp には3つの組み込みテーマがあります：
 
 ### 画像が表示されない
 
-- 相対パスを確認
+**CLI プレビューで表示されない場合**:
+- 画像を `slides/images/` に配置しているか確認
+- プレビューサーバーがプロジェクトルートから起動されているか確認
+- 相対パス（`./images/filename.png`）で参照しているか確認
+- 参考: [GitHub Issue #163](https://github.com/marp-team/marp-cli/issues/163)
+
+**VS Code プレビューで表示されない場合**:
+- 絶対パス（`/assets/images/...`）ではなく相対パスを使用
+
+**一般的な対処法**:
 - `.marprc.yml` で `allowLocalFiles: true` を設定
+- `--allow-local-files` フラグを使用
 
 ### PDF出力がうまくいかない
 
