@@ -402,10 +402,10 @@ footer: 'Confidential'
 ### プレビュー（推奨）
 
 ```bash
-# サーバーモードでライブプレビュー
-marp -s slide.md
+# プロジェクトルートからサーバー起動（画像表示に必要）
+marp -s . --allow-local-files
 
-# ブラウザで http://localhost:8080 にアクセス
+# ブラウザで http://localhost:8080/slides/file.md にアクセス
 ```
 
 ### ウォッチモード
@@ -446,15 +446,14 @@ project/
 ├── .marprc.yml          # Marp設定ファイル
 ├── slides/              # スライドファイル
 │   ├── presentation1.md
-│   └── presentation2.md
+│   ├── presentation2.md
+│   └── images/          # スライド用画像（重要！）
 ├── themes/              # カスタムテーマ（任意）
 │   └── custom.css
-├── assets/              # 画像リソース
-│   └── images/
 └── dist/                # 出力先
-    ├── presentation1.html
-    └── presentation1.pdf
 ```
+
+**Tip**: 画像は `slides/images/` に配置し `./images/file.png` で参照
 
 ---
 
@@ -480,19 +479,21 @@ themeSet: ./themes
 
 ### 画像が表示されない
 
-```bash
-# CLIオプションで解決
-marp --allow-local-files slide.md
+**CLI プレビューの場合**:
 
-# または .marprc.yml に追加
-allowLocalFiles: true
-```
+1. 画像を `slides/images/` に配置
+2. 相対パス `./images/file.png` で参照
+3. プロジェクトルートから `marp -s . --allow-local-files`
+
+**VS Code プレビューの場合**:
+
+- 絶対パス（`/images/...`）は使わない
+- 相対パス（`./images/...`）を使用
 
 ### PDF出力が失敗する
 
 ```bash
-# ブラウザを明示的に指定
-marp --browser firefox slide.md --pdf
+marp --allow-local-files slide.md --pdf
 ```
 
 ---
@@ -509,7 +510,7 @@ npm install -g @marp-team/marp-cli
 
 ### 3. 編集しながらプレビュー
 ```bash
-marp -s slides/presentation.md
+marp -s . --allow-local-files
 ```
 
 ---
@@ -517,7 +518,7 @@ marp -s slides/presentation.md
 ## 初心者向けワークフロー
 
 ### 4. ブラウザで確認
-`http://localhost:8080` にアクセス
+`http://localhost:8080/slides/presentation.md` にアクセス
 
 ### 5. 最終出力
 ```bash
@@ -530,18 +531,19 @@ marp slides/presentation.md -o dist/presentation.pdf
 
 ### 1. サンプルファイル作成
 
-`first.md` を作成してMarpの基本構文を試す
+`slides/first.md` を作成してMarpの基本構文を試す
 
 ### 2. プレビュー
 
 ```bash
-marp -s first.md
+marp -s . --allow-local-files
+# http://localhost:8080/slides/first.md にアクセス
 ```
 
 ### 3. PDF出力
 
 ```bash
-marp first.md -o first.pdf
+marp slides/first.md -o first.pdf --allow-local-files
 ```
 
 ---
