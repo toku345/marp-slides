@@ -242,6 +242,7 @@ theme: uncover  # ミニマル・詩的な表現向け
 ---
 
 <!-- _class: invert -->
+<!-- _backgroundColor: #2d3436 -->
 
 # これが invert クラスの実例
 
