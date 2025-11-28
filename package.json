@@ -6,7 +6,8 @@
   "scripts": {
     "build": "bun run build:html && bun run build:pdf",
     "preview": "marp -s . --allow-local-files",
-    "build:html": "marp -I slides/ -o dist/ --html --allow-local-files",
+    "copy:images": "mkdir -p dist/images && cp -r slides/images/* dist/images/",
+    "build:html": "bun run copy:images && marp -I slides/ -o dist/ --html --allow-local-files",
     "build:pdf": "marp -I slides/ -o dist/ --pdf --allow-local-files",
     "build:pptx": "marp -I slides/ -o dist/ --pptx --allow-local-files",
     "lint": "markdownlint slides/**/*.md",
