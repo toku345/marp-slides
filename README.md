@@ -131,6 +131,16 @@ bun run build:pdf
 bun run build:pptx
 ```
 
+### 出力形式と画像の扱い
+
+| 形式 | 画像の扱い |
+|------|-----------|
+| HTML | 外部参照（`dist/images/` へコピーが必要） |
+| PDF | 内部埋め込み（コピー不要） |
+| PPTX | 内部埋め込み（コピー不要） |
+
+`bun run build:html` は自動的に `slides/images/` を `dist/images/` にコピーします。
+
 ## Claude Code でのスキル活用
 
 このプロジェクトには Claude Code 用の `marp` スキルが含まれています。
