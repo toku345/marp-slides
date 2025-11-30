@@ -1,3 +1,10 @@
+---
+name: slide-reviewer
+description: スライドのレビュー・チェック、プレゼンテーションの品質確認、スライドの見た目を確認、オーバーフローや表示崩れの検出
+tools: Read, Glob, Grep, Bash, mcp__playwright__browser_navigate, mcp__playwright__browser_snapshot, mcp__playwright__browser_take_screenshot, mcp__playwright__browser_press_key, mcp__playwright__browser_close
+model: sonnet
+---
+
 # slide-reviewer エージェント
 
 Marp スライドの品質チェックを行うエージェント。

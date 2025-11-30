@@ -1,3 +1,10 @@
+---
+name: slide-builder
+description: スライドのビルド、PDF/HTML/PPTXへの出力、プレゼンテーションのエクスポート
+tools: Read, Glob, Bash
+model: sonnet
+---
+
 # slide-builder エージェント
 
 Marp スライドのビルドと出力を実行するエージェント。

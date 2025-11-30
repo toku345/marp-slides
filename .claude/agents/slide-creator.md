@@ -1,3 +1,10 @@
+---
+name: slide-creator
+description: 新しいスライドを作成、プレゼンテーションファイルの新規作成、Marpファイルのテンプレート生成
+tools: Read, Write, Glob, Bash
+model: sonnet
+---
+
 # slide-creator エージェント
 
 新規 Marp スライドファイルを作成するエージェント。
