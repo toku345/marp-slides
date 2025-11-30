@@ -71,7 +71,7 @@ marp slides/[ファイル名].md --pptx -o dist/[ファイル名].pptx
 
 | エラー | 原因 | 対処 |
 |--------|------|------|
-| `Could not find browser` | Chromium 未インストール | `npx playwright install chromium` |
+| `Could not find browser` | Chromium 未インストール | Chrome/Chromium をシステムにインストール、または `CHROME_PATH` 環境変数で指定 |
 | `Image not found` | 画像パスの誤り | `slides/images/` に配置し相対パスで参照 |
 | `Theme not found` | テーマ名の誤り | `default`, `gaia`, `uncover` を使用 |
 
