@@ -15,8 +15,12 @@
 ```
 marp-slides/
 ├── .claude/
+│   ├── agents/           # Claude Code用Subagents
+│   │   ├── slide-creator.md    # スライド新規作成
+│   │   ├── slide-reviewer.md   # 品質チェック・視覚検証
+│   │   └── slide-builder.md    # ビルド・出力
 │   └── skills/
-│       └── marp/         # Claude Code用Marpスキル
+│       └── marp/         # Claude Code用Marpスキル（リファレンス）
 ├── slides/               # スライドファイル（.md）
 │   └── images/           # スライド用画像（CLI・VS Code両対応）
 ├── themes/               # カスタムテーマ（.css）
@@ -78,7 +82,27 @@ bun run build:pdf
 
 ## 基本的な使い方
 
-### 1. スライドを作成
+### 方法 1: Claude Code を使う（推奨）
+
+Claude Code を使うと、自然言語でスライド作成ができます：
+
+```bash
+# Claude Code を起動
+claude
+
+# スライド作成を依頼
+> 「Claude Code の新機能」について新しいスライドを作成してください
+```
+
+slide-creator エージェントが自動的に起動し、テンプレートに沿ったスライドを生成します。
+
+**トリガーフレーズ例:**
+- 「新しいスライドを作成して」
+- 「〇〇についてスライドを作成してください」
+
+### 方法 2: 手動で作成
+
+#### 1. スライドを作成
 
 `slides/` ディレクトリに `.md` ファイルを作成します。
 
@@ -102,7 +126,7 @@ paginate: true
 - 箇条書き3
 ```
 
-### 2. プレビューで確認
+#### 2. プレビューで確認
 
 プレビューサーバーを起動して、ブラウザで確認しながら編集：
 
@@ -113,7 +137,7 @@ bun run preview
 
 VS Code の Marp 拡張機能を使うとリアルタイムプレビューも可能です。
 
-### 3. エクスポート
+#### 3. エクスポート
 
 完成したスライドを各種形式でエクスポート：
 
@@ -131,6 +155,12 @@ bun run build:pdf
 bun run build:pptx
 ```
 
+または Claude Code で：
+
+```
+> PDF に出力して
+```
+
 ### 出力形式と画像の扱い
 
 | 形式 | 画像の扱い |
@@ -141,19 +171,28 @@ bun run build:pptx
 
 `bun run build:html` は自動的に `slides/images/` を `dist/images/` にコピーします。
 
-## Claude Code でのスキル活用
+## Claude Code との連携
 
-このプロジェクトには Claude Code 用の `marp` スキルが含まれています。
+このプロジェクトには Claude Code 用の **Skill**（知識ベース）と **Subagents**（タスク実行エージェント）が含まれています。
 
-### スキルの使い方
+### Subagents（タスク自動実行）
 
-Claude Code でスライド作成を依頼する際、以下のように指示してください：
+自然言語で依頼するだけで、適切なエージェントが自動的に起動します：
+
+| エージェント | 起動例 | 機能 |
+|-------------|--------|------|
+| **slide-creator** | 「新しいスライドを作成して」 | テンプレート生成、ファイル作成 |
+| **slide-reviewer** | 「スライドをレビューして」 | 品質チェック、Playwright による視覚検証 |
+| **slide-builder** | 「PDF に出力して」 | HTML/PDF/PPTX へのビルド |
 
 ```
-marp スキルを使って、新しいスライドを作成してください
+# 使用例
+新しいスライドを作成してください
+このスライドの品質をチェックして
+PDF に出力して
 ```
 
-### スキルに含まれる内容
+### Skill（リファレンス）
 
 `marp` スキル（`.claude/skills/marp/skill.md`）には以下の情報が含まれています：
 
@@ -167,7 +206,19 @@ marp スキルを使って、新しいスライドを作成してください
 - カスタムテーマの作成方法
 - トラブルシューティング
 
-Claude Code が `marp` スキルを自動的に読み込み、詳細なガイドを参照しながら作業を支援します。
+### Skill と Subagents の役割分担
+
+```
+Skill (marp)          → 参照用の知識ベース
+  ├─ 構文リファレンス
+  ├─ 設定オプション
+  └─ トラブルシューティング
+
+Subagents             → アクション実行
+  ├─ slide-creator    → 新規作成
+  ├─ slide-reviewer   → 品質チェック（視覚検証含む）
+  └─ slide-builder    → ビルド出力
+```
 
 ## よく使うコマンド
 
