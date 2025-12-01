@@ -9,6 +9,7 @@
     ":automergeDigest",
     "group:allNonMajor"
   ],
+  "minimumReleaseAge": "3 days",
   "labels": ["dependencies", "renovate"],
   "prHourlyLimit": 5,
   "prConcurrentLimit": 5,
