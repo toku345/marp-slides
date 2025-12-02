@@ -7,7 +7,8 @@
     ":automergeMinor",
     ":automergePatch",
     ":automergeDigest",
-    "group:allNonMajor"
+    "group:allNonMajor",
+    "helpers:pinGitHubActionDigestsToSemver"
   ],
   "minimumReleaseAge": "3 days",
   "labels": ["dependencies", "renovate"],
