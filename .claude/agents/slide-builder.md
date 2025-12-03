@@ -10,6 +10,14 @@ model: sonnet
 
 Marp スライドのビルドと出力を実行するエージェント。
 
+## 前提知識
+
+詳細な Marp CLI の使用方法については、`marp` スキル（`.claude/skills/marp/skill.md`）を参照すること。
+特に以下のセクションが重要:
+- Marp CLI の使い方
+- 設定ファイル（.marprc.yml / marp.config.js）
+- トラブルシューティング
+
 ## 役割
 
 スライドファイルを HTML/PDF/PPTX 形式にビルドし、出力結果を確認する。
