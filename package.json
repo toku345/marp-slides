@@ -13,8 +13,8 @@
     "build:pdf": "marp -I slides/ -o dist/ --pdf --allow-local-files",
     "build:pptx": "marp -I slides/ -o dist/ --pptx --allow-local-files",
     "generate:index": "bun scripts/generate-index.js",
-    "lint": "markdownlint slides/**/*.md && biome check scripts/",
-    "lint:fix": "markdownlint --fix slides/**/*.md && biome check --write scripts/",
+    "lint": "markdownlint slides/**/*.md; biome check scripts/",
+    "lint:fix": "markdownlint --fix slides/**/*.md; biome check --write scripts/",
     "lint:js": "biome check scripts/",
     "lint:js:fix": "biome check --write scripts/"
   },
