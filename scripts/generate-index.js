@@ -9,6 +9,18 @@ const DIST_DIR = join(import.meta.dirname, '..', 'dist');
 const SLIDES_DIR = join(import.meta.dirname, '..', 'slides');
 
 /**
+ * Escape HTML special characters to prevent XSS
+ */
+function escapeHtml(str) {
+  return str
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+}
+
+/**
  * Extract title from Marp frontmatter or filename
  */
 function getSlideTitle(baseName) {
@@ -65,18 +77,18 @@ function generateIndexHtml(slides) {
     .map((slide) => {
       const downloads = [];
       if (slide.pdf) {
-        downloads.push(`<a href="${slide.pdf}" class="download pdf">PDF</a>`);
+        downloads.push(`<a href="${escapeHtml(slide.pdf)}" class="download pdf">PDF</a>`);
       }
       if (slide.pptx) {
         downloads.push(
-          `<a href="${slide.pptx}" class="download pptx">PPTX</a>`
+          `<a href="${escapeHtml(slide.pptx)}" class="download pptx">PPTX</a>`
         );
       }
       const downloadLinks =
         downloads.length > 0 ? `<span class="downloads">${downloads.join(' ')}</span>` : '';
 
       return `      <li>
-        <a href="${slide.html}" class="slide-link">${slide.title}</a>
+        <a href="${escapeHtml(slide.html)}" class="slide-link">${escapeHtml(slide.title)}</a>
         ${downloadLinks}
       </li>`;
     })
