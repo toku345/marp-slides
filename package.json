@@ -12,7 +12,7 @@
     "build:html": "bun run copy:images && marp -I slides/ -o dist/ --html --allow-local-files",
     "build:pdf": "marp -I slides/ -o dist/ --pdf --allow-local-files",
     "build:pptx": "marp -I slides/ -o dist/ --pptx --allow-local-files",
-    "generate:index": "node scripts/generate-index.js",
+    "generate:index": "bun scripts/generate-index.js",
     "lint": "markdownlint slides/**/*.md",
     "lint:fix": "markdownlint --fix slides/**/*.md"
   },
