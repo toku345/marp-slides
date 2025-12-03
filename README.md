@@ -2,6 +2,8 @@
 
 このプロジェクトは [Marp (Markdown Presentation Ecosystem)](https://marp.app/) を使用して、マークダウンベースのプレゼンテーションスライドを作成・管理するためのものです。
 
+**デモ**: https://toku345.github.io/marp-slides/
+
 ## 特徴
 
 - **マークダウンでスライド作成**: テキストエディタで簡単にプレゼンテーション作成
@@ -304,6 +306,7 @@ Marp には3つの組み込みテーマがあります：
 
 ## 参考リンク
 
+- [GitHub Pages (デモサイト)](https://toku345.github.io/marp-slides/)
 - [Marp 公式サイト](https://marp.app/)
 - [Marp GitHub](https://github.com/marp-team/marp)
 - [Marp CLI](https://github.com/marp-team/marp-cli)
