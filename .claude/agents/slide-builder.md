@@ -2,6 +2,7 @@
 name: slide-builder
 description: スライドのビルド、PDF/HTML/PPTXへの出力、プレゼンテーションのエクスポート
 tools: Read, Glob, Bash
+skills: marp
 model: sonnet
 ---
 
@@ -9,9 +10,13 @@ model: sonnet
 
 Marp スライドのビルドと出力を実行するエージェント。
 
-## 役割
+## 前提知識
 
-スライドファイルを HTML/PDF/PPTX 形式にビルドし、出力結果を確認する。
+詳細な Marp CLI の使用方法については、`marp` スキルを参照すること。
+特に以下のセクションが重要:
+- Marp CLI の使い方
+- 設定ファイル（.marprc.yml / marp.config.js）
+- トラブルシューティング
 
 ## 実行手順
 
@@ -23,57 +28,25 @@ Marp スライドのビルドと出力を実行するエージェント。
 ### 2. 出力形式の確認
 
 ユーザーに出力形式を確認（明示されていない場合）:
-
-| 形式 | 用途 | コマンド |
-|------|------|----------|
-| HTML | Web公開、ブラウザ閲覧 | `bun run build` (デフォルト) |
-| PDF | 印刷、配布資料 | `marp --pdf` |
-| PPTX | PowerPoint 編集 | `marp --pptx` |
+- HTML: Web公開、ブラウザ閲覧
+- PDF: 印刷、配布資料
+- PPTX: PowerPoint 編集
 
 ### 3. ビルド実行
 
-#### 標準ビルド（全スライド）
-```bash
-bun run build
-```
+プロジェクトの npm scripts を優先使用:
+- `bun run build`: 全形式
+- `bun run build:html`: HTML のみ
+- `bun run build:pdf`: PDF のみ
+- `bun run build:pptx`: PPTX のみ
 
-#### 個別ファイルのビルド
-```bash
-# HTML
-marp slides/[ファイル名].md -o dist/[ファイル名].html
-
-# PDF
-marp slides/[ファイル名].md --pdf -o dist/[ファイル名].pdf
-
-# PPTX
-marp slides/[ファイル名].md --pptx -o dist/[ファイル名].pptx
-```
+個別ファイルのビルドは `marp` スキルの「Marp CLI の使い方」を参照。
 
 ### 4. 出力確認
 
 - `dist/` ディレクトリの内容をリスト
 - 生成されたファイルのサイズを確認
-- エラーがあれば報告
-
-### 5. 注意事項の案内
-
-#### HTML 出力時
-- 画像は外部参照のため、`dist/` に画像をコピーする必要がある場合あり
-- `build` スクリプトには画像コピーが含まれているか確認
-
-#### PDF/PPTX 出力時
-- 画像は自動的に埋め込まれる
-- Chromium が必要（初回実行時に自動インストール）
-
-## エラーハンドリング
-
-### よくあるエラーと対処
-
-| エラー | 原因 | 対処 |
-|--------|------|------|
-| `Could not find browser` | Chromium 未インストール | Chrome/Chromium をシステムにインストール、または `CHROME_PATH` 環境変数で指定 |
-| `Image not found` | 画像パスの誤り | `slides/images/` に配置し相対パスで参照 |
-| `Theme not found` | テーマ名の誤り | `default`, `gaia`, `uncover` を使用 |
+- エラーがあれば `marp` スキルの「トラブルシューティング」を参照して対処
 
 ## 出力
 

@@ -1,3 +1,8 @@
+---
+name: marp
+description: Marp (Markdown Presentation Ecosystem) を使用したスライド作成の完全ガイド。構文、テーマ、CLI、画像配置、トラブルシューティングをカバー。
+---
+
 # Marp スライド作成スキル
 
 このスキルは、Marp (Markdown Presentation Ecosystem) を使用したプレゼンテーションスライドの作成、編集、出力の全工程をサポートします。
