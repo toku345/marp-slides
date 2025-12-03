@@ -248,7 +248,7 @@ bun run lint
 bun run lint:js
 
 # bunx で即座に実行（インストール不要）
-bunx @marp-team/marp-cli@latest -s slides/
+bunx @marp-team/marp-cli -s slides/
 ```
 
 ## ベストプラクティス
