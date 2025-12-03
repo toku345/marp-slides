@@ -2,6 +2,7 @@
 name: slide-builder
 description: スライドのビルド、PDF/HTML/PPTXへの出力、プレゼンテーションのエクスポート
 tools: Read, Glob, Bash
+skills: marp
 model: sonnet
 ---
 
