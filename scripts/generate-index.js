@@ -2,22 +2,22 @@
  * Generate index.html for GitHub Pages
  * Lists all slides with links to HTML, PDF, and PPTX versions
  */
-import { readdirSync, existsSync, readFileSync, writeFileSync } from 'node:fs';
-import { join, basename } from 'node:path';
+import { existsSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
+import { basename, join } from "node:path";
 
-const DIST_DIR = join(import.meta.dirname, '..', 'dist');
-const SLIDES_DIR = join(import.meta.dirname, '..', 'slides');
+const DIST_DIR = join(import.meta.dirname, "..", "dist");
+const SLIDES_DIR = join(import.meta.dirname, "..", "slides");
 
 /**
  * Escape HTML special characters to prevent XSS
  */
 function escapeHtml(str) {
   return str
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#039;');
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
 }
 
 /**
@@ -26,7 +26,7 @@ function escapeHtml(str) {
 function getSlideTitle(baseName) {
   const mdPath = join(SLIDES_DIR, `${baseName}.md`);
   if (existsSync(mdPath)) {
-    const content = readFileSync(mdPath, 'utf-8');
+    const content = readFileSync(mdPath, "utf-8");
     // Match title in frontmatter: title: "..." or title: '...' or title: ...
     const titleMatch = content.match(/^title:\s*["']?([^"'\n]+)["']?\s*$/m);
     if (titleMatch) {
@@ -39,9 +39,7 @@ function getSlideTitle(baseName) {
     }
   }
   // Fallback: convert filename to title case
-  return baseName
-    .replace(/-/g, ' ')
-    .replace(/\b\w/g, (c) => c.toUpperCase());
+  return baseName.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
 }
 
 /**
@@ -50,11 +48,11 @@ function getSlideTitle(baseName) {
 function getSlides() {
   const files = readdirSync(DIST_DIR);
   const htmlFiles = files.filter(
-    (f) => f.endsWith('.html') && f !== 'index.html'
+    (f) => f.endsWith(".html") && f !== "index.html",
   );
 
   return htmlFiles.map((htmlFile) => {
-    const baseName = basename(htmlFile, '.html');
+    const baseName = basename(htmlFile, ".html");
     return {
       baseName,
       title: getSlideTitle(baseName),
@@ -77,24 +75,28 @@ function generateIndexHtml(slides) {
     .map((slide) => {
       const downloads = [];
       if (slide.pdf) {
-        downloads.push(`<a href="${escapeHtml(slide.pdf)}" class="download pdf">PDF</a>`);
+        downloads.push(
+          `<a href="${escapeHtml(slide.pdf)}" class="download pdf">PDF</a>`,
+        );
       }
       if (slide.pptx) {
         downloads.push(
-          `<a href="${escapeHtml(slide.pptx)}" class="download pptx">PPTX</a>`
+          `<a href="${escapeHtml(slide.pptx)}" class="download pptx">PPTX</a>`,
         );
       }
       const downloadLinks =
-        downloads.length > 0 ? `<span class="downloads">${downloads.join(' ')}</span>` : '';
+        downloads.length > 0
+          ? `<span class="downloads">${downloads.join(" ")}</span>`
+          : "";
 
       return `      <li>
         <a href="${escapeHtml(slide.html)}" class="slide-link">${escapeHtml(slide.title)}</a>
         ${downloadLinks}
       </li>`;
     })
-    .join('\n');
+    .join("\n");
 
-  const now = new Date().toISOString().split('T')[0];
+  const now = new Date().toISOString().split("T")[0];
 
   return `<!DOCTYPE html>
 <html lang="ja">
@@ -221,9 +223,11 @@ ${slideItems}
 // Main
 const slides = getSlides();
 console.log(`Found ${slides.length} slides:`);
-slides.forEach((s) => console.log(`  - ${s.title} (${s.baseName})`));
+for (const s of slides) {
+  console.log(`  - ${s.title} (${s.baseName})`);
+}
 
 const indexHtml = generateIndexHtml(slides);
-const outputPath = join(DIST_DIR, 'index.html');
+const outputPath = join(DIST_DIR, "index.html");
 writeFileSync(outputPath, indexHtml);
 console.log(`\nGenerated: ${outputPath}`);
