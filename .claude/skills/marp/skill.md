@@ -481,11 +481,11 @@ marp -s slides/
 グローバルインストール不要で即座に試せます：
 
 ```bash
-# インストールせずに実行
-bunx @marp-team/marp-cli@latest slide.md
+# インストールせずに実行（package.json のバージョンを使用）
+bunx @marp-team/marp-cli slide.md
 
 # プレビューサーバーも可能
-bunx @marp-team/marp-cli@latest -s slides/
+bunx @marp-team/marp-cli -s slides/
 ```
 
 **注意**: `-s` (サーバーモード) はディレクトリを指定する必要があります。単一ファイルは指定できません。
