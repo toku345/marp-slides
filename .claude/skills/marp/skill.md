@@ -429,7 +429,7 @@ marp slide.md
 
 ## インストール方法
 
-npm、Homebrew、Scoop、Docker、npx...
+bun、npm、Homebrew、Scoop、Docker...
 （すべての方法を1スライドに）
 
 <!-- 良い例: 複数スライドに分割 -->
@@ -437,7 +437,7 @@ npm、Homebrew、Scoop、Docker、npx...
 
 ## インストール方法（基本）
 
-npm install -g @marp-team/marp-cli
+bun add -g @marp-team/marp-cli
 
 ---
 
