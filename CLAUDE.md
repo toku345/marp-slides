@@ -11,6 +11,7 @@ marp-slides/
 │       └── marp/         # Marpスキル（構文、CLI、カスタマイズ等）
 ├── slides/               # スライドファイル
 │   └── images/           # スライド用画像（CLI・VS Code両対応）
+├── scripts/              # ビルドスクリプト（Biome で lint）
 ├── themes/               # カスタムテーマ（任意）
 ├── assets/               # その他のリソース
 └── dist/                 # 出力先（HTML/PDF/PPTX）
@@ -52,6 +53,20 @@ marp-slides/
 5. 出力: `bun run build`
 
 詳細な使い方は `marp` スキルを参照してください。
+
+## 開発コマンド
+
+### Lint
+
+- `bun run lint`: Markdown + JavaScript の lint チェック
+- `bun run lint:fix`: lint エラーの自動修正
+- `bun run lint:js`: JavaScript のみチェック
+- `bun run lint:js:fix`: JavaScript のみ自動修正
+
+### ツール
+
+- **markdownlint**: `slides/**/*.md` の Markdown lint
+- **Biome**: `scripts/**/*.js` の JavaScript lint/format
 
 ## Subagents
 
