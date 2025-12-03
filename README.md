@@ -25,6 +25,7 @@ marp-slides/
 │       └── marp/         # Claude Code用Marpスキル（リファレンス）
 ├── slides/               # スライドファイル（.md）
 │   └── images/           # スライド用画像（CLI・VS Code両対応）
+├── scripts/              # ビルドスクリプト（Biome で lint）
 ├── themes/               # カスタムテーマ（.css）
 ├── assets/               # その他のリソース
 └── dist/                 # 出力先（HTML/PDF/PPTX）
@@ -240,8 +241,11 @@ bun run build:pdf
 # PowerPoint のみ
 bun run build:pptx
 
-# マークダウンのリントチェック
+# リントチェック（Markdown + JavaScript）
 bun run lint
+
+# JavaScript のみリント
+bun run lint:js
 
 # bunx で即座に実行（インストール不要）
 bunx @marp-team/marp-cli@latest -s slides/
