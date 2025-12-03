@@ -2,14 +2,17 @@
   "name": "marp-slides",
   "version": "1.0.0",
   "description": "Markdown-based presentation slides with Marp",
+  "type": "module",
   "private": true,
   "scripts": {
     "build": "bun run build:html && bun run build:pdf",
+    "build:deploy": "bun run build:html && bun run build:pdf && bun run build:pptx && bun run generate:index",
     "preview": "marp -s . --allow-local-files",
     "copy:images": "mkdir -p dist/images && cp -r slides/images/* dist/images/",
     "build:html": "bun run copy:images && marp -I slides/ -o dist/ --html --allow-local-files",
     "build:pdf": "marp -I slides/ -o dist/ --pdf --allow-local-files",
     "build:pptx": "marp -I slides/ -o dist/ --pptx --allow-local-files",
+    "generate:index": "bun scripts/generate-index.js",
     "lint": "markdownlint slides/**/*.md",
     "lint:fix": "markdownlint --fix slides/**/*.md"
   },
