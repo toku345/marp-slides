@@ -6,7 +6,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "mkdir -p ~/.claude/debug && echo \"$(date '+%Y-%m-%d %H:%M:%S') | Tool: $CLAUDE_TOOL_NAME | Session: $CLAUDE_SESSION_ID\" >> ~/.claude/debug/tool-usage.log"
+            "command": "mkdir -p ~/.claude/debug && jq -r '[(.tool_name // \"unknown\"), (.session_id // \"unknown\")] | @tsv' | while read tool session; do echo \"$(date '+%Y-%m-%d %H:%M:%S') | Tool: $tool | Session: $session\" >> ~/.claude/debug/tool-usage.log; done"
           }
         ]
       }
