@@ -1,0 +1,15 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "mkdir -p ~/.claude/debug && echo \"$(date '+%Y-%m-%d %H:%M:%S') | Tool: $CLAUDE_TOOL_NAME | Session: $CLAUDE_SESSION_ID\" >> ~/.claude/debug/tool-usage.log"
+          }
+        ]
+      }
+    ]
+  }
+}
