@@ -27,6 +27,15 @@ Claude Code を使用する開発者に向けて：
 - **サブエージェントの透明性**を高める手法
 - **スキル使用状況**の確認方法
 
+<!--
+【発表者向け補足】
+このスライドは PR #26 での実際の試行錯誤から得られた知見をまとめたものです。
+トラブルシューティングで役立つコマンド:
+- /doctor: インストール状態と設定問題を検証
+- /bug: Anthropic へ問題を報告
+- /feedback: フィードバック送信
+-->
+
 ---
 
 <!-- _class: lead -->
@@ -151,6 +160,22 @@ claude --debug '!statsig,!file'
 }
 ```
 
+<!--
+【発表者向け補足】
+利用可能な Hook イベント:
+- SessionStart: セッション開始時
+- SessionEnd / Stop: セッション終了時
+- UserPromptSubmit: ユーザー入力送信時
+- PreToolUse: ツール実行前
+- PostToolUse: ツール実行後
+
+matcher の例:
+- "*": すべてのツール
+- "Bash": Bash ツールのみ
+- "Task": Task（サブエージェント）のみ
+- "Read,Write": 複数指定も可能
+-->
+
 ---
 
 ## Hook の設定例
@@ -215,6 +240,17 @@ Claude Code の hooks は**環境変数ではなく stdin で JSON を渡す仕�
 jq -r '.tool_name' >> log.txt
 ```
 
+<!--
+【発表者向け補足】
+実際の試行錯誤の経緯:
+1. 最初: $CLAUDE_TOOL_NAME を使用 → 空文字
+2. 次: read json で stdin を読み取り → ブロック（動かない）
+3. 次: json=$(cat) で stdin を読み取り → 動作せず
+4. 最終: jq に直接パイプ → 成功！
+
+この問題は GitHub Issue #9567, #5489 でも報告されています。
+-->
+
 ---
 
 ## Hook に渡される JSON データ
@@ -226,6 +262,23 @@ jq -r '.tool_name' >> log.txt
 - `hook_event_name`
 
 **jq でパースして必要な情報を抽出**
+
+<!--
+【発表者向け補足】
+JSON データの全フィールド:
+- session_id: セッション識別子
+- transcript_path: 会話履歴ファイルのパス
+- cwd: 作業ディレクトリ
+- permission_mode: 権限モード (default, acceptEdits, bypassPermissions など)
+- hook_event_name: イベント名 (PostToolUse など)
+- tool_name: ツール名 (Bash, Read, Write, Task など)
+- tool_input: ツールへの入力（オブジェクト）
+- tool_response: ツールからの応答（オブジェクト）
+- tool_use_id: ツール使用の一意識別子
+
+デバッグ時は cat > ~/.claude/debug/stdin-debug.json で
+stdin の内容を直接ファイルに保存して確認すると便利です。
+-->
 
 ---
 
@@ -283,6 +336,18 @@ jq -r '.tool_name' >> log.txt
 5. `~/.claude/settings.json`（最低優先）
 
 **ローカル設定は `.local.json` で上書き可能**
+
+<!--
+【発表者向け補足】
+settings.json で設定できる主な項目:
+- hooks: フック設定
+- permissions: ツール実行の許可設定（allow/deny）
+- mcpServers: MCP サーバー設定
+- env: 環境変数
+
+.claude/settings.local.json は .gitignore に追加して
+個人の開発環境固有の設定を管理するのがおすすめです。
+-->
 
 ---
 
