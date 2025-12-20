@@ -1,6 +1,6 @@
 ---
-name: marp-slides
-description: このプロジェクトでMarpスライドを作成・編集する際に使用する。プロジェクト固有のルールと設定を提供する。
+name: creating-marp-slides
+description: slides/ ディレクトリにMarpスライドを作成、またはプレビュー・ビルドする際に参照する。画像配置ルールとプロジェクトコマンドを提供する。
 ---
 
 # Marp スライドプロジェクト
