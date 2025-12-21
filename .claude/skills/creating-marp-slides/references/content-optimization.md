@@ -23,6 +23,8 @@
 
 ```bash
 bun run preview
+# → http://localhost:8080/slides/[ファイル名].md にアクセス
+# 各スライドが画面内に収まっているか確認
 ```
 
 slide-reviewer エージェントで Playwright を使った自動検証も可能。
