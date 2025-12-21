@@ -8,7 +8,7 @@
 marp-slides/
 ├── .claude/
 │   └── skills/
-│       └── marp/         # Marpスキル（構文、CLI、カスタマイズ等）
+│       └── marp/         # Marpスキル（プロジェクト固有ルール）
 ├── slides/               # スライドファイル
 │   └── images/           # スライド用画像（CLI・VS Code両対応）
 ├── scripts/              # ビルドスクリプト（Biome で lint）
@@ -27,15 +27,12 @@ marp-slides/
 
 ## スキル
 
-- **marp**: Marpスライド作成の完全ガイド
-  - セットアップとインストール
-  - マークダウン構文とディレクティブ
-  - テーマとレイアウト
-  - 開発サーバーとプレビュー
-  - HTML/PDF/PPTX出力
-  - カスタムテーマ作成
-  - コンテンツ最適化とレイアウト調整
-  - トラブルシューティング
+- **creating-marp-slides**: プロジェクト固有の Marp スライド作成ルール
+  - 画像配置ルール（`slides/images/`）
+  - 開発コマンド（`bun run preview` / `bun run build`）
+  - 設定ファイル（`.marprc.yml`）
+  - トラブルシューティング（references/）
+  - コンテンツ最適化（references/）
 
 ## 学習リソース
 
@@ -52,7 +49,7 @@ marp-slides/
 4. プレビュー: `bun run preview` → `http://localhost:8080/slides/presentation.md`
 5. 出力: `bun run build`
 
-詳細な使い方は `marp` スキルを参照してください。
+詳細な使い方は `creating-marp-slides` スキルを参照してください。
 
 ## 開発コマンド
 
