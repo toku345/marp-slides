@@ -33,4 +33,6 @@
 
 **原因**: Chromium が必要。
 
-**解決策**: Playwright の Chromium または `brew install --cask chromium` でインストール。
+**解決策**:
+- Playwright 経由: `bunx playwright install chromium`
+- Homebrew 経由: `brew install --cask chromium`
