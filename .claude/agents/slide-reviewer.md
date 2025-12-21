@@ -17,8 +17,8 @@ Marp スライドの品質チェックを行うエージェント。
 - 画像配置ルール（`slides/images/`）
 - Front Matter 必須設定
 - テーマ選択と注意事項
-- references/content-optimization.md（オーバーフロー回避）
-- references/troubleshooting.md
+- `creating-marp-slides/references/content-optimization.md`（オーバーフロー回避）
+- `creating-marp-slides/references/troubleshooting.md`
 
 ## 実行手順
 
@@ -36,7 +36,7 @@ Marp スライドの品質チェックを行うエージェント。
 - コンテンツ量（1スライドあたりの情報量）
   - 箇条書き: 5-7 項目まで（超過は警告）
   - コードブロック: 15 行以下（超過はオーバーフローリスク）
-  - 詳細は references/content-optimization.md 参照
+  - 詳細は `creating-marp-slides/references/content-optimization.md` 参照
 
 ### 3. 視覚的検証（Playwright MCP）
 
