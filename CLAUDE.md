@@ -8,7 +8,7 @@
 marp-slides/
 ├── .claude/
 │   └── skills/
-│       └── marp/         # Marpスキル（プロジェクト固有ルール）
+│       └── creating-marp-slides/  # Marpスキル（プロジェクト固有ルール）
 ├── slides/               # スライドファイル
 │   └── images/           # スライド用画像（CLI・VS Code両対応）
 ├── scripts/              # ビルドスクリプト（Biome で lint）

@@ -22,7 +22,7 @@ marp-slides/
 │   │   ├── slide-reviewer.md   # 品質チェック・視覚検証
 │   │   └── slide-builder.md    # ビルド・出力
 │   └── skills/
-│       └── marp/         # Claude Code用Marpスキル（プロジェクト固有ルール）
+│       └── creating-marp-slides/  # Claude Code用Marpスキル（プロジェクト固有ルール）
 ├── slides/               # スライドファイル（.md）
 │   └── images/           # スライド用画像（CLI・VS Code両対応）
 ├── scripts/              # ビルドスクリプト（Biome で lint）
@@ -197,7 +197,7 @@ PDF に出力して
 
 ### Skill（プロジェクト固有ルール）
 
-`creating-marp-slides` スキル（`.claude/skills/marp/`）には以下の情報が含まれています：
+`creating-marp-slides` スキル（`.claude/skills/creating-marp-slides/`）には以下の情報が含まれています：
 
 - 画像配置ルール（`slides/images/`）
 - 開発コマンド（`bun run preview` / `bun run build`）
@@ -259,7 +259,7 @@ bunx @marp-team/marp-cli -s slides/
 4. **コンテンツを分割**: 長い内容は複数スライドに分ける
 5. **プレビューで確認**: 必ずプレビューサーバーやスクリーンショットで各スライドを検証
 
-詳細は `.claude/skills/marp/references/content-optimization.md` を参照してください。
+詳細は `.claude/skills/creating-marp-slides/references/content-optimization.md` を参照してください。
 
 ## テーマ
 
