@@ -1,5 +1,5 @@
 ---
-name: marp
+name: creating-marp-slides
 description: このプロジェクトでの Marp スライド作成ルール。スライド作成、画像配置、ビルド、プレビュー時に使用。画像は slides/images/ に配置、bun run preview/build を使用。
 ---
 
