@@ -50,6 +50,8 @@ themeSet: ./themes     # カスタムテーマディレクトリ
 html: true             # HTML タグ許可
 ```
 
+その他のオプション（`inputDir`, `output` 等）については [Marp CLI 公式ドキュメント](https://github.com/marp-team/marp-cli#configuration-file) を参照。
+
 ## Front Matter 必須設定
 
 ```yaml
