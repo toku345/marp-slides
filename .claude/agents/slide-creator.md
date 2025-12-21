@@ -2,7 +2,7 @@
 name: slide-creator
 description: 新しいスライドを作成、プレゼンテーションファイルの新規作成、Marpファイルのテンプレート生成
 tools: Read, Write, Glob, Bash
-skills: marp
+skills: creating-marp-slides
 model: sonnet
 ---
 
@@ -12,14 +12,12 @@ model: sonnet
 
 ## 前提知識
 
-詳細な Marp の構文・設定については、`marp` スキルを参照すること。
-特に以下のセクションが重要:
-- 基本的なマークダウン記法
-- Front Matter 設定
-- ディレクティブ
-- 組み込みテーマ
-- 画像の配置
-- プロジェクト推奨構造
+プロジェクト固有のルールについては、`creating-marp-slides` スキルを参照すること。
+特に以下が重要:
+- 画像配置ルール（`slides/images/`）
+- Front Matter 必須設定
+- テーマ選択
+- 開発コマンド
 
 ## 実行手順
 
@@ -33,7 +31,7 @@ model: sonnet
 ### 2. ファイル作成
 
 `slides/` ディレクトリに新規ファイルを作成。
-テンプレート構造は `marp` スキルの「基本的なマークダウン記法」セクションを参照。
+テンプレート構造は `creating-marp-slides` スキルの「Front Matter 必須設定」を参照。
 
 ### 3. 案内事項
 

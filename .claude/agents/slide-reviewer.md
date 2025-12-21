@@ -2,7 +2,7 @@
 name: slide-reviewer
 description: スライドのレビュー・チェック、プレゼンテーションの品質確認、スライドの見た目を確認、オーバーフローや表示崩れの検出
 tools: Read, Glob, Grep, Bash, mcp__playwright__browser_navigate, mcp__playwright__browser_snapshot, mcp__playwright__browser_take_screenshot, mcp__playwright__browser_press_key, mcp__playwright__browser_close
-skills: marp
+skills: creating-marp-slides
 model: sonnet
 ---
 
@@ -12,13 +12,13 @@ Marp スライドの品質チェックを行うエージェント。
 
 ## 前提知識
 
-詳細な Marp の構文・設定については、`marp` スキルを参照すること。
-特に以下のセクションが重要:
-- Front Matter 設定
-- ディレクティブ
-- コンテンツ最適化とレイアウト（オーバーフロー回避）
-- 画像配置のベストプラクティス
-- トラブルシューティング
+プロジェクト固有のルールについては、`creating-marp-slides` スキルを参照すること。
+特に以下が重要:
+- 画像配置ルール（`slides/images/`）
+- Front Matter 必須設定
+- テーマ選択と注意事項
+- references/content-optimization.md（オーバーフロー回避）
+- references/troubleshooting.md
 
 ## 実行手順
 
@@ -29,7 +29,7 @@ Marp スライドの品質チェックを行うエージェント。
 
 ### 2. テキストベースのチェック
 
-`marp` スキルを参照し、以下を検証:
+`creating-marp-slides` スキルを参照し、以下を検証:
 - Front Matter の必須設定（marp: true）
 - theme の有効性
 - 画像パスの形式と存在確認
