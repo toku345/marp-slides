@@ -195,25 +195,16 @@ bun run build:pptx
 PDF に出力して
 ```
 
-### Skill（プロジェクト固有ルール）
-
-`creating-marp-slides` スキル（`.claude/skills/creating-marp-slides/`）には以下の情報が含まれています：
-
-- 画像配置ルール（`slides/images/`）
-- 開発コマンド（`bun run preview` / `bun run build`）
-- 設定ファイル（`.marprc.yml`）
-- トラブルシューティング（references/troubleshooting.md）
-- コンテンツ最適化（references/content-optimization.md）
-
 ### Skill と Subagents の役割分担
 
 ```
-Skill (creating-marp-slides)  → プロジェクト固有ルール
-  ├─ 画像配置・ファイル構成
-  ├─ 開発コマンド・設定
-  └─ references/（トラブルシューティング、最適化）
+creating-marp-slides スキル (.claude/skills/creating-marp-slides/)
+  ├─ SKILL.md                 → 画像配置、開発コマンド、設定
+  └─ references/
+      ├─ troubleshooting.md   → トラブルシューティング
+      └─ content-optimization.md → コンテンツ最適化
 
-Subagents                     → アクション実行
+Subagents (.claude/agents/)
   ├─ slide-creator            → 新規作成
   ├─ slide-reviewer           → 品質チェック（視覚検証含む）
   └─ slide-builder            → ビルド出力
