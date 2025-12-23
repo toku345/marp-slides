@@ -22,7 +22,7 @@ marp-slides/
 │   │   ├── slide-reviewer.md   # 品質チェック・視覚検証
 │   │   └── slide-builder.md    # ビルド・出力
 │   └── skills/
-│       └── marp/         # Claude Code用Marpスキル（リファレンス）
+│       └── creating-marp-slides/  # Claude Code用Marpスキル（プロジェクト固有ルール）
 ├── slides/               # スライドファイル（.md）
 │   └── images/           # スライド用画像（CLI・VS Code両対応）
 ├── scripts/              # ビルドスクリプト（Biome で lint）
@@ -195,32 +195,19 @@ bun run build:pptx
 PDF に出力して
 ```
 
-### Skill（リファレンス）
-
-`marp` スキル（`.claude/skills/marp/skill.md`）には以下の情報が含まれています：
-
-- セットアップとインストール方法
-- マークダウン構文とディレクティブ
-- 組み込みテーマ（default/gaia/uncover）
-- レイアウトクラス（lead/invert）
-- 画像の配置と背景画像
-- 数式（KaTeX）のサポート
-- Marp CLI の使い方
-- カスタムテーマの作成方法
-- トラブルシューティング
-
 ### Skill と Subagents の役割分担
 
 ```
-Skill (marp)          → 参照用の知識ベース
-  ├─ 構文リファレンス
-  ├─ 設定オプション
-  └─ トラブルシューティング
+creating-marp-slides スキル (.claude/skills/creating-marp-slides/)
+  ├─ SKILL.md                 → 画像配置、開発コマンド、設定
+  └─ references/
+      ├─ troubleshooting.md   → トラブルシューティング
+      └─ content-optimization.md → コンテンツ最適化
 
-Subagents             → アクション実行
-  ├─ slide-creator    → 新規作成
-  ├─ slide-reviewer   → 品質チェック（視覚検証含む）
-  └─ slide-builder    → ビルド出力
+Subagents (.claude/agents/)
+  ├─ slide-creator            → 新規作成
+  ├─ slide-reviewer           → 品質チェック（視覚検証含む）
+  └─ slide-builder            → ビルド出力
 ```
 
 ## よく使うコマンド
@@ -263,7 +250,7 @@ bunx @marp-team/marp-cli -s slides/
 4. **コンテンツを分割**: 長い内容は複数スライドに分ける
 5. **プレビューで確認**: 必ずプレビューサーバーやスクリーンショットで各スライドを検証
 
-詳細は `.claude/skills/marp/skill.md` の「コンテンツ最適化とレイアウト」セクションを参照してください。
+詳細は `.claude/skills/creating-marp-slides/references/content-optimization.md` を参照してください。
 
 ## テーマ
 
@@ -279,7 +266,7 @@ Marp には3つの組み込みテーマがあります：
 
 `themes/` ディレクトリにCSSファイルを配置してカスタムテーマを作成できます。
 
-詳細は Claude Code の `marp` スキルまたは [公式ドキュメント](https://marpit.marp.app/theme-css) を参照してください。
+詳細は [公式ドキュメント](https://marpit.marp.app/theme-css) を参照してください。
 
 ## トラブルシューティング
 

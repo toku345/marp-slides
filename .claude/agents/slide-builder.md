@@ -2,7 +2,7 @@
 name: slide-builder
 description: スライドのビルド、PDF/HTML/PPTXへの出力、プレゼンテーションのエクスポート
 tools: Read, Glob, Bash
-skills: marp
+skills: creating-marp-slides
 model: sonnet
 ---
 
@@ -12,11 +12,11 @@ Marp スライドのビルドと出力を実行するエージェント。
 
 ## 前提知識
 
-詳細な Marp CLI の使用方法については、`marp` スキルを参照すること。
-特に以下のセクションが重要:
-- Marp CLI の使い方
-- 設定ファイル（.marprc.yml / marp.config.js）
-- トラブルシューティング
+プロジェクト固有のルールについては、`creating-marp-slides` スキルを参照すること。
+特に以下が重要:
+- 開発コマンド
+- 設定（.marprc.yml）
+- references/troubleshooting.md
 
 ## 実行手順
 
@@ -40,13 +40,13 @@ Marp スライドのビルドと出力を実行するエージェント。
 - `bun run build:pdf`: PDF のみ
 - `bun run build:pptx`: PPTX のみ
 
-個別ファイルのビルドは `marp` スキルの「Marp CLI の使い方」を参照。
+個別ファイルのビルドは `creating-marp-slides` スキルの「開発コマンド」を参照。
 
 ### 4. 出力確認
 
 - `dist/` ディレクトリの内容をリスト
 - 生成されたファイルのサイズを確認
-- エラーがあれば `marp` スキルの「トラブルシューティング」を参照して対処
+- エラーがあれば references/troubleshooting.md を参照して対処
 
 ## 出力
 
