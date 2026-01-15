@@ -88,21 +88,33 @@ kakko-de はこのパターンをシンプルに実装
 
 ---
 
-## LLMの本質
+## LLMの本質：Autocompleteエンジン
 
-### 「次の単語を予測する」装置
-
-LLM は **Autoregressive Model（自己回帰モデル）**
-→ 前の単語から次の単語を予測し続ける
+スマホの**予測変換**と同じ仕組み
 
 ```
-入力: 「今日の天気は」
-予測: 「晴れ」「曇り」「雨」...（確率順）
+入力: "I love"  →  LLM  →  予測: "cats"
+         ↓
+入力: "I love cats"  →  LLM  →  予測: "."
+         ↓
+結果: "I love cats."  （文章完成）
 ```
 
-**Gmail の予測変換を超巨大にしたもの**
+**「次の1語を当てる」をひたすら繰り返す**
 
-> 参考: [Embers of Autoregression (PNAS 2024)](https://www.pnas.org/doi/10.1073/pnas.2322420121)
+---
+
+## Autocomplete = Autoregressive
+
+| 呼び方 | 意味 |
+|-------|------|
+| **Autocomplete** | 体験としての名前（予測変換） |
+| **Autoregressive** | 仕組みの名前（自己回帰） |
+
+> "We train GPT-3, an **autoregressive** language model"
+> — [Language Models are Few-Shot Learners (OpenAI, 2020)](https://arxiv.org/abs/2005.14165)
+
+**同じもの、違う呼び方**
 
 ---
 
