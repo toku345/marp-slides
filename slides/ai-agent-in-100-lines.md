@@ -4,8 +4,9 @@ theme: default
 paginate: true
 ---
 
-# AIエージェントの仕組みを
-# 100行で理解する
+# LLMはなぜツールを使えるのか？
+
+〜 AIエージェントの仕組みを紐解く 〜
 
 社内勉強会 LT
 
@@ -22,53 +23,7 @@ paginate: true
 「コードを修正して」→ 本当にコードが変わる
 ```
 
-**考える + 行動する = AIエージェント**
-
----
-
-## 仕組み（function_call フロー）
-
-```
-     User Input
-         |
-         v
-  +----------------+ <-----------------+
-  |   LLM API      |  (with tools)     |
-  +-------+--------+                   |
-          |                            |
-          v                            |
-  +----------------+                   |
-  | tool_calls ?   |                   |
-  +---+-------+----+                   |
-      |       |                        |
-     Yes      No                       |
-      |       |                        |
-      v       v                        |
-  +-------+  +--------------+          |
-  | Tool  |  | Return Answer|          |
-  | Exec  |  +--------------+          |
-  +---+---+                            |
-      |                                |
-      +--- Add result to messages -----+
-```
-
----
-
-## ReActパターン
-
-**ReAct = Reasoning + Acting**
-
-| ステップ | 説明 | 例 |
-| --------- | ------ | ----- |
-| 1. 考える | 何をすべきか判断 | 「ファイル一覧が必要だ」 |
-| 2. 行動する | ツールを実行 | list_dir を呼び出す |
-| 3. 観察する | 結果を確認 | 「sample.txt がある」 |
-
-↓ **必要なら繰り返す**
-
-[kakko-de](https://github.com/toku345/kakko-de)（Clojure製AIエージェント）はこのパターンをシンプルに実装
-
-> 参考: [ReAct (Yao et al., 2022)](https://arxiv.org/abs/2210.03629)
+**LLM + ツール + ループ = AIエージェント**
 
 ---
 
@@ -116,7 +71,7 @@ paginate: true
 > "We train GPT-3, an **autoregressive** language model"
 > — [Language Models are Few-Shot Learners (OpenAI, 2020)](https://arxiv.org/abs/2005.14165)
 
-**同じもの、違う呼び方**
+**同じ仕組みを、体験と技術の観点から呼んでいる**
 
 ---
 
@@ -137,7 +92,59 @@ LLM予測: 「list_dir を呼び出すべき」← 学習パターンから
 
 ---
 
-## デモ
+## 全体の流れ（function_call フロー）
+
+```
+     User Input
+         |
+         v
+  +----------------+ <-----------------+
+  |   LLM API      |  (with tools)     |
+  +-------+--------+                   |
+          |                            |
+          v                            |
+  +----------------+                   |
+  | tool_calls ?   |                   |
+  +---+-------+----+                   |
+      |       |                        |
+     Yes      No                       |
+      |       |                        |
+      v       v                        |
+  +-------+  +--------------+          |
+  | Tool  |  | Return Answer|          |
+  | Exec  |  +--------------+          |
+  +---+---+                            |
+      |                                |
+      +--- Add result to messages -----+
+```
+
+---
+
+## 内部プロンプトの実例（Qwen3-Coder + vLLM）
+
+```
+<|im_start|>system
+You are a helpful coding assistant...
+
+# Tools
+<tools>
+<function><name>read_file</name>...</function>
+<function><name>list_dir</name>...</function>
+</tools>
+<|im_end|>
+<|im_start|>user
+README.md の内容を要約してください。
+<|im_end|>
+<|im_start|>assistant   ← ここで止まっている！
+```
+
+**LLMは「次に何が来るか」を予測** → ツール呼び出しを生成
+
+---
+
+## デモ: [kakko-de](https://github.com/toku345/kakko-de)
+
+Clojure製AIエージェント（Function Calling ベース）
 
 ```bash
 clj -M:run "test/ 配下のファイル一覧を教えて"
@@ -156,10 +163,22 @@ clj -M:run "test/ 配下のファイル一覧を教えて"
 ### 学んだこと
 
 1. **AIエージェント = LLM + ツール + ループ**
-2. **ReActパターン** で「考える→行動→観察」を繰り返す
-3. **意外とシンプル**（100行で実装可能）
+2. **Function Calling** でLLMがツールを呼び出す
+3. **仕組みは意外とシンプル**
 
-### 次のステップ
+---
 
-- 自分でエージェントを作ってみる
-- Claude Code / Cursor の仕組みを理解する
+## 参考: ReActパターン
+
+**ReAct = Reasoning + Acting**（明示的な推論を出力）
+
+| ステップ | 説明 |
+| --------- | ------ |
+| Thought | 推論を**テキストで出力** |
+| Action | ツールを実行 |
+| Observation | 結果を確認 |
+
+Function Calling は ReAct の流れを実用化したもの
+（明示的な推論出力 → 暗黙的な推論へ）
+
+> [ReAct (Yao et al., 2022)](https://arxiv.org/abs/2210.03629)
