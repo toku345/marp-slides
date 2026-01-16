@@ -66,7 +66,9 @@ paginate: true
 
 ↓ **必要なら繰り返す**
 
-kakko-de はこのパターンをシンプルに実装
+[kakko-de](https://github.com/toku345/kakko-de)（Clojure製AIエージェント）はこのパターンをシンプルに実装
+
+> 参考: [ReAct (Yao et al., 2022)](https://arxiv.org/abs/2210.03629)
 
 ---
 
