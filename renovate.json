@@ -4,29 +4,23 @@
     "config:recommended",
     "schedule:weekly",
     ":timezone(Asia/Tokyo)",
-    ":automergeMinor",
-    ":automergePatch",
-    ":automergeDigest",
     "group:allNonMajor",
     "helpers:pinGitHubActionDigestsToSemver"
   ],
-  "minimumReleaseAge": "3 days",
+  "minimumReleaseAge": "7 days",
   "labels": ["dependencies", "renovate"],
   "prHourlyLimit": 5,
   "prConcurrentLimit": 5,
+  "dependencyDashboard": true,
+  "configMigration": true,
+  "osvVulnerabilityAlerts": true,
+  "vulnerabilityAlerts": {
+    "labels": ["dependencies", "security"],
+    "automerge": false,
+    "minimumReleaseAge": "0 days",
+    "schedule": ["at any time"]
+  },
   "packageRules": [
-    {
-      "description": "Auto-merge patch and minor for dev dependencies",
-      "matchDepTypes": ["devDependencies"],
-      "matchUpdateTypes": ["patch", "minor"],
-      "automerge": true
-    },
-    {
-      "description": "Auto-merge GitHub Actions updates (non-major)",
-      "matchManagers": ["github-actions"],
-      "matchUpdateTypes": ["patch", "minor", "digest"],
-      "automerge": true
-    },
     {
       "description": "Major updates require manual review",
       "matchUpdateTypes": ["major"],
