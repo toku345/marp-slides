@@ -38,7 +38,9 @@
     {
       "customType": "regex",
       "description": "Update bun-version in GitHub Actions workflows",
-      "fileMatch": ["^\\.github/workflows/.*\\.ya?ml$"],
+      "managerFilePatterns": [
+        "/^\\.github/workflows/.*\\.ya?ml$/"
+      ],
       "matchStrings": [
         "bun-version:\\s*['\"]?(?<currentValue>[^'\"\\s]+)['\"]?"
       ],
