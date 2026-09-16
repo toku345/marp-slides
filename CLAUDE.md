@@ -1,90 +1,37 @@
 # Marp スライドプロジェクト
 
-このプロジェクトは Marp (Markdown Presentation Ecosystem) を使用して、マークダウンベースのプレゼンテーションスライドを作成・管理するためのものです。
+Bun と Marp CLI で Markdown スライドを作成・出力する。
+`AGENTS.md` はこのファイルへのシンボリックリンク。共通の指示はここで管理する。
 
-## プロジェクト構成
+## 配置と作成ルール
 
-```
-marp-slides/
-├── .claude/
-│   └── skills/
-│       └── creating-marp-slides/  # Marpスキル（プロジェクト固有ルール）
-├── slides/               # スライドファイル
-│   └── images/           # スライド用画像（CLI・VS Code両対応）
-├── scripts/              # ビルドスクリプト（Biome で lint）
-├── themes/               # カスタムテーマ（任意）
-├── assets/               # その他のリソース
-└── dist/                 # 出力先（HTML/PDF/PPTX）
-```
+- スライド: `slides/*.md`。Front Matter に `marp: true` を指定する。
+- 画像: `slides/images/` に置き、スライドから `./images/filename.png` で参照する。
+- カスタムテーマ: `themes/*.css`。Marp の設定は `.marprc.yml`。
+- ビルド出力: `dist/`（Git 管理対象外）。
+- スライド作成・修正時は [.claude/skills/creating-marp-slides/SKILL.md](.claude/skills/creating-marp-slides/SKILL.md) を参照する。
+  情報量・レイアウトの指針とトラブルシューティングは同ディレクトリの `references/` にある。
 
-### 画像配置の重要な注意点
+## 開発と検証
 
-スライドで使用する画像は **`slides/images/`** に配置してください。
+コマンドはプロジェクトルートで実行する。依存関係の導入は `bun install`。
 
-- `./images/filename.png` のような相対パスで参照可能
-- CLI プレビュー (`bun run preview`) と VS Code プレビューの両方で動作
-- 詳細は [GitHub Issue #163](https://github.com/marp-team/marp-cli/issues/163) を参照
+| コマンド | 用途 |
+| --- | --- |
+| `bun run preview` | プレビュー（`http://localhost:8080/slides/<name>.md`） |
+| `bun run build` | HTML + PDF を出力 |
+| `bun run build:html` / `build:pdf` / `build:pptx` | 指定形式を出力 |
+| `bun run lint` | スライドの Markdown と `scripts/` の JavaScript を検証 |
+| `bun run lint:js` | JavaScript のみ検証 |
 
-## スキル
+スライド変更時は lint に加え、プレビューで画像・見切れ・レイアウトを確認する。
+ビルド変更時は対象形式の出力を確認する。実行できなかった検証は報告する。
+セットアップや基本操作は [README.md](README.md) を参照する。
 
-- **creating-marp-slides**: プロジェクト固有の Marp スライド作成ルール
-  - 画像配置ルール（`slides/images/`）
-  - 開発コマンド（`bun run preview` / `bun run build`）
-  - 設定ファイル（`.marprc.yml`）
-  - トラブルシューティング（references/）
-  - コンテンツ最適化（references/）
+## Claude Code 用エージェント
 
-## 学習リソース
+Claude Code では、依頼に応じて `.claude/agents/` のエージェントを使用する:
 
-- **slides/marp-tutorial.md**: Marp初心者向けの包括的なチュートリアルスライド（26ページ）
-  - インストール方法から出力まで完全カバー
-  - 実践的なワークフローとベストプラクティス
-  - コンテンツオーバーフローを避ける実例
-
-## クイックスタート
-
-1. 依存関係をインストール: `bun install`
-2. スライドを作成: `slides/presentation.md`
-3. 画像は `slides/images/` に配置
-4. プレビュー: `bun run preview` → `http://localhost:8080/slides/presentation.md`
-5. 出力: `bun run build`
-
-詳細な使い方は `creating-marp-slides` スキルを参照してください。
-
-## 開発コマンド
-
-### Lint
-
-- `bun run lint`: Markdown + JavaScript の lint チェック
-- `bun run lint:fix`: lint エラーの自動修正
-- `bun run lint:js`: JavaScript のみチェック
-- `bun run lint:js:fix`: JavaScript のみ自動修正
-
-### ツール
-
-- **markdownlint**: `slides/**/*.md` の Markdown lint
-- **Biome**: `scripts/**/*.js` の JavaScript lint/format
-
-## Subagents
-
-### slide-creator エージェント
-
-ユーザーが以下を依頼した場合、Task ツールで `slide-creator` エージェントを使用:
-- 新しいスライドを作成
-- プレゼンテーションファイルの新規作成
-- Marp ファイルのテンプレート生成
-
-### slide-reviewer エージェント
-
-ユーザーが以下を依頼した場合、Task ツールで `slide-reviewer` エージェントを使用:
-- スライドのレビュー・チェック
-- プレゼンテーションの品質確認
-- スライドの見た目を確認
-- オーバーフローや表示崩れの検出
-
-### slide-builder エージェント
-
-ユーザーが以下を依頼した場合、Task ツールで `slide-builder` エージェントを使用:
-- スライドのビルド
-- PDF/HTML/PPTX への出力
-- プレゼンテーションのエクスポート
+- `slide-creator`: 新規スライド作成
+- `slide-reviewer`: 品質・表示の確認
+- `slide-builder`: ビルド・エクスポート
