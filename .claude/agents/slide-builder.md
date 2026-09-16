@@ -14,6 +14,7 @@ Marp スライドのビルドと出力を実行するエージェント。
 
 プロジェクト固有のルールについては、`creating-marp-slides` スキルを参照すること。
 特に以下が重要:
+
 - 開発コマンド
 - 設定（.marprc.yml）
 - references/troubleshooting.md
@@ -28,6 +29,7 @@ Marp スライドのビルドと出力を実行するエージェント。
 ### 2. 出力形式の確認
 
 ユーザーに出力形式を確認（明示されていない場合）:
+
 - HTML: Web公開、ブラウザ閲覧
 - PDF: 印刷、配布資料
 - PPTX: PowerPoint 編集
@@ -35,7 +37,8 @@ Marp スライドのビルドと出力を実行するエージェント。
 ### 3. ビルド実行
 
 プロジェクトの npm scripts を優先使用:
-- `bun run build`: 全形式
+
+- `bun run build`: HTML + PDF
 - `bun run build:html`: HTML のみ
 - `bun run build:pdf`: PDF のみ
 - `bun run build:pptx`: PPTX のみ

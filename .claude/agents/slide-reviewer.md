@@ -14,6 +14,7 @@ Marp スライドの品質チェックを行うエージェント。
 
 プロジェクト固有のルールについては、`creating-marp-slides` スキルを参照すること。
 特に以下が重要:
+
 - 画像配置ルール（`slides/images/`）
 - Front Matter 必須設定
 - テーマ選択と注意事項
@@ -30,15 +31,18 @@ Marp スライドの品質チェックを行うエージェント。
 ### 2. テキストベースのチェック
 
 `creating-marp-slides` スキルを参照し、以下を検証:
+
 - Front Matter の必須設定（marp: true）
 - theme の有効性
 - 画像パスの形式と存在確認
 - コンテンツ量（1スライドあたりの情報量）
-  - 箇条書き: 5-7 項目まで（超過は警告）
-  - コードブロック: 15 行以下（超過はオーバーフローリスク）
+  - 項目数や行数だけで判定せず、実際の表示から見切れを確認
   - 詳細は `creating-marp-slides/references/content-optimization.md` 参照
 
-### 3. 視覚的検証（Playwright MCP）
+### 3. 視覚的検証
+
+Playwright MCP が利用可能なら以下を実行する。利用できない場合はスキルの
+`references/content-optimization.md` にある画像出力で確認し、表示確認できなければ未検証と報告する。
 
 1. プレビューサーバーを起動: `bun run preview`
 2. `browser_navigate` で `http://localhost:8080/slides/[ファイル名]` にアクセス
