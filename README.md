@@ -174,9 +174,12 @@ bun run build:pptx
 
 `bun run build:html` は自動的に `slides/images/` を `dist/images/` にコピーします。
 
-## Claude Code との連携
+## AI エージェントとの連携
 
-このプロジェクトには Claude Code 用の **Skill**（知識ベース）と **Subagents**（タスク実行エージェント）が含まれています。
+共通の skill は `.claude/skills/creating-marp-slides/` で管理し、Codex 用の
+`.agents/skills/creating-marp-slides` からシンボリックリンクで参照します。
+Claude Code / Codex のどちらでも、スライド作成・修正・レビュー・出力に使用できます。
+`.claude/agents/` の Subagents は Claude Code 専用です。
 
 ### Subagents（タスク自動実行）
 
