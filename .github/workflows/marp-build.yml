@@ -88,24 +88,26 @@ jobs:
 
       - name: Build summary
         run: |
-          echo "## Build Summary" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "Successfully built the following slides:" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "### HTML" >> $GITHUB_STEP_SUMMARY
-          for file in dist/*.html; do
-            echo "- $(basename $file)" >> $GITHUB_STEP_SUMMARY
-          done
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "### PDF" >> $GITHUB_STEP_SUMMARY
-          for file in dist/*.pdf; do
-            echo "- $(basename $file)" >> $GITHUB_STEP_SUMMARY
-          done
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "### PPTX" >> $GITHUB_STEP_SUMMARY
-          for file in dist/*.pptx; do
-            echo "- $(basename $file)" >> $GITHUB_STEP_SUMMARY
-          done
+          {
+            echo "## Build Summary"
+            echo ""
+            echo "Successfully built the following slides:"
+            echo ""
+            echo "### HTML"
+            for file in dist/*.html; do
+              echo "- $(basename "$file")"
+            done
+            echo ""
+            echo "### PDF"
+            for file in dist/*.pdf; do
+              echo "- $(basename "$file")"
+            done
+            echo ""
+            echo "### PPTX"
+            for file in dist/*.pptx; do
+              echo "- $(basename "$file")"
+            done
+          } >> "$GITHUB_STEP_SUMMARY"
 
   deploy:
     if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
