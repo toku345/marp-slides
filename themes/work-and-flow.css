@@ -6,7 +6,9 @@ section {
   font-family: 'Noto Sans CJK JP', 'Noto Sans JP', sans-serif;
   font-size: 28px;
   padding: 48px 64px;
-  justify-content: flex-start;
+  display: flex;
+  flex-flow: column nowrap;
+  place-content: start stretch;
   line-height: 1.5;
   border-top: 9px solid #277d80;
 }
@@ -50,5 +52,5 @@ section.appendix { font-size: 23px; }
 section.methods { font-size: 22px; }
 .methods .cols { gap: 32px; }
 .methods h3 { font-size: 23px; margin: 0 0 10px; }
-.methods p { margin: 0 0 12px; }
-.source { font-size: 17px; margin-top: 16px; padding-top: 12px; border-top: 1px solid #c9d6d4; }
+.methods p { margin: 0 0 10px; }
+.source { font-size: 17px; margin-top: 12px; padding-top: 10px; border-top: 1px solid #c9d6d4; }
