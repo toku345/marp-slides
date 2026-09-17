@@ -36,6 +36,7 @@ a { color: #14666c; }
 .compare .label { margin: 0 0 5px; }
 .compare .shared { font-size: 23px; margin: 4px 0 16px; }
 .metrics { font-size: 23px; margin-top: 18px; text-align: center; }
+.punch { font-size: 30px; text-align: center; margin-top: 26px; }
 .flow { display: flex; align-items: center; gap: 12px; margin: 18px 0 28px; }
 .step { flex: 1; text-align: center; padding: 18px 8px; background: #e5eeed; border-radius: 10px; font-size: 25px; }
 .step.wait { background: #fff0d2; }
@@ -50,7 +51,7 @@ section.appendix { font-size: 23px; }
 .omissions { margin-top: 24px; padding-top: 16px; border-top: 1px solid #c9d6d4; }
 .qa { display: grid; grid-template-columns: 340px 1fr; gap: 0 26px; font-size: 23px; }
 .qa > div { padding: 17px 0; border-bottom: 1px solid #c9d6d4; }
-section.methods { font-size: 20px; }
+section.methods { font-size: 22px; }
 .methods .cols { gap: 32px; }
 .methods h3 { font-size: 23px; margin: 0 0 10px; }
 .methods p { margin: 0 0 12px; }
