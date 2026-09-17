@@ -29,7 +29,6 @@ a { color: #14666c; }
 .placeholder { border: 2px dashed #9badaf; background: #eef2f1; border-radius: 12px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; color: #546c70; }
 .placeholder strong { font-size: 26px; color: #546c70; }
 .placeholder small { font-size: 19px; margin-top: 12px; }
-.bed-screen { height: 270px; margin: 8px 0 16px; }
 .compare-screen { height: 235px; margin-top: 16px; }
 .compare .card { padding: 18px 24px; }
 .compare h3 { font-size: 24px; margin: 0; }
@@ -48,9 +47,6 @@ section.appendix { font-size: 23px; }
 .appendix h2 { font-size: 34px; }
 .appendix .card { padding: 20px 24px; }
 .appendix ul { margin: 8px 0; padding-left: 1.2em; }
-.omissions { margin-top: 24px; padding-top: 16px; border-top: 1px solid #c9d6d4; }
-.qa { display: grid; grid-template-columns: 340px 1fr; gap: 0 26px; font-size: 23px; }
-.qa > div { padding: 17px 0; border-bottom: 1px solid #c9d6d4; }
 section.methods { font-size: 22px; }
 .methods .cols { gap: 32px; }
 .methods h3 { font-size: 23px; margin: 0 0 10px; }
