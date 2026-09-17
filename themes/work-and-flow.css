@@ -41,10 +41,14 @@ section.title { place-content: stretch center; }
 .compare .shared { font-size: 23px; margin: 4px 0 16px; }
 .metrics { font-size: 23px; margin-top: 18px; text-align: center; }
 .punch { font-size: 30px; text-align: center; margin-top: 26px; }
+.bridge { font-size: 23px; color: #546c70; text-align: center; margin-top: 12px; }
 .flow { display: flex; align-items: center; gap: 12px; margin: 18px 0 28px; }
 .step { flex: 1; text-align: center; padding: 18px 8px; background: #e5eeed; border-radius: 10px; font-size: 25px; }
 .step.wait { background: #fff0d2; }
 .arrow { color: #71898a; }
+.demo { display: flex; align-items: center; gap: 20px; margin-top: 26px; }
+.demo a { background: #14666c; color: #fff; text-decoration: none; border-radius: 10px; padding: 12px 22px; font-size: 24px; font-weight: 700; white-space: nowrap; }
+.demo .note { margin: 0; }
 .message { font-size: 43px; line-height: 1.65; font-weight: 700; margin: 15px 0 32px; }
 .lenses { display: flex; align-items: center; gap: 22px; margin-top: 10px; }
 .lenses .card { text-align: center; flex: 1; }
