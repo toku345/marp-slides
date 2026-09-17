@@ -24,6 +24,9 @@ a { color: #14666c; }
 section.title { place-content: stretch center; }
 .title h1 { margin: 0 0 28px; }
 .byline { font-size: 26px; color: #546c70; margin: 0; }
+section.notice { justify-content: center; text-align: center; }
+.notice-message { font-size: 34px; line-height: 1.7; margin: 12px 0 28px; }
+.notice-detail { font-size: 25px; color: #546c70; line-height: 1.7; }
 .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
 .card { background: #fff; border: 1px solid #d8e1df; border-radius: 12px; padding: 24px 28px; }
 .label { font-size: 19px; color: #546c70; margin-bottom: 8px; }
@@ -48,3 +51,4 @@ section.methods { font-size: 22px; }
 .methods h3 { font-size: 23px; margin: 0 0 10px; }
 .methods p { margin: 0 0 10px; }
 .source { font-size: 17px; margin-top: 12px; padding-top: 10px; border-top: 1px solid #c9d6d4; }
+.closing .flow { margin-top: 54px; }
