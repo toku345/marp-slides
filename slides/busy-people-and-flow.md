@@ -9,8 +9,6 @@ description: 手が空いたときに何を選ぶかを問い直す社内LT。�
 
 <!-- _class: title -->
 
-<div class="kicker">社内 LT ／ 人の忙しさと、施策の進み方</div>
-
 # みんなが忙しいと、<br>施策は早く終わる？
 
 <p class="byline">toku345</p>
