@@ -105,8 +105,11 @@ description: 手が空いたときに何を選ぶかを問い直す社内LT。�
 </div>
 
 <div class="demo">
-<a href="https://hospital-bed-capacity-lab.toku345.chatgpt.site" target="_blank" rel="noopener">別タブで動かす</a>
+
+[病床シミュレーター](https://hospital-bed-capacity-lab.toku345.chatgpt.site) を別タブで開く
+
 <p class="note">右を16床にして再生 → 余力のない側だけ、待ちが積み上がる<br>同じ16床のまま「一定」へ → ばらつきがなければ、待ちは消える</p>
+
 </div>
 
 <p class="punch">私たちの「手が空いている」も、<strong>同じだろうか。</strong></p>
@@ -152,8 +155,11 @@ description: 手が空いたときに何を選ぶかを問い直す社内LT。�
 </div>
 
 <div class="demo">
-<a href="https://flow-efficiency-lab-ja.toku345.chatgpt.site" target="_blank" rel="noopener">別タブで動かす</a>
+
+[チーム開発シミュレーター](https://flow-efficiency-lab-ja.toku345.chatgpt.site) を別タブで開く
+
 <p class="note">同じ5人でAとBを並べて20日進める → 届いた数と、最も古い仕事の待ち日数<br>同時に持つ件数を1／3／8に変える → 数字の動く向き</p>
+
 </div>
 
 <p class="punch">1件が早く届くのは、どちらだろう？<br>1か月に<strong>届いた数</strong>が多いのは？</p>
@@ -276,8 +282,11 @@ Bagust らは離散イベント確率シミュレーションで、余剰病床�
 </div>
 
 <div class="demo">
-<a href="https://role-interruption-flow-lab-ja.toku345.chatgpt.site" target="_blank" rel="noopener">別タブで動かす</a>
+
+[ロール別シミュレーター](https://role-interruption-flow-lab-ja.toku345.chatgpt.site) を別タブで開く
+
 <p class="note">突発依頼を「発生なし」と切り替える → 待ちが出る場所の違い</p>
+
 </div>
 
 <!--
