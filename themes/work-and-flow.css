@@ -31,15 +31,6 @@ section.title { place-content: stretch center; }
 .wait { background: #fff0d2; color: #745019; border-color: #e8cd96; }
 .note { font-size: 19px; color: #546c70; }
 .foot { position: absolute; left: 64px; right: 64px; bottom: 40px; font-size: 17px; color: #546c70; }
-.placeholder { border: 2px dashed #9badaf; background: #eef2f1; border-radius: 12px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; color: #546c70; }
-.placeholder strong { font-size: 26px; color: #546c70; }
-.placeholder small { font-size: 19px; margin-top: 12px; }
-.compare-screen { height: 235px; margin-top: 16px; }
-.compare .card { padding: 18px 24px; }
-.compare h3 { font-size: 24px; margin: 0; }
-.compare .label { margin: 0 0 5px; }
-.compare .shared { font-size: 23px; margin: 4px 0 16px; }
-.metrics { font-size: 23px; margin-top: 18px; text-align: center; }
 .punch { font-size: 30px; text-align: center; margin-top: 26px; }
 .bridge { font-size: 23px; color: #546c70; text-align: center; margin-top: 12px; }
 .flow { display: flex; align-items: center; gap: 12px; margin: 18px 0 28px; }
@@ -49,13 +40,8 @@ section.title { place-content: stretch center; }
 .demo { display: flex; align-items: center; gap: 20px; margin-top: 26px; }
 .demo a { background: #14666c; color: #fff; text-decoration: none; border-radius: 10px; padding: 12px 22px; font-size: 24px; font-weight: 700; white-space: nowrap; }
 .demo .note { margin: 0; }
-.message { font-size: 43px; line-height: 1.65; font-weight: 700; margin: 15px 0 32px; }
-.lenses { display: flex; align-items: center; gap: 22px; margin-top: 10px; }
-.lenses .card { text-align: center; flex: 1; }
 section.appendix { font-size: 23px; }
 .appendix h2 { font-size: 34px; }
-.appendix .card { padding: 20px 24px; }
-.appendix ul { margin: 8px 0; padding-left: 1.2em; }
 section.methods { font-size: 22px; }
 .methods .cols { gap: 32px; }
 .methods h3 { font-size: 23px; margin: 0 0 10px; }
