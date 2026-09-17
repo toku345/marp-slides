@@ -21,6 +21,9 @@ p { margin: 8px 0 16px; }
 strong { color: #14666c; }
 a { color: #14666c; }
 .kicker { color: #277d80; font-size: 19px; letter-spacing: .09em; margin-bottom: 16px; }
+section.title { place-content: center stretch; }
+.title h1 { margin: 0 0 28px; }
+.byline { font-size: 26px; color: #546c70; margin: 0; }
 .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
 .card { background: #fff; border: 1px solid #d8e1df; border-radius: 12px; padding: 24px 28px; }
 .label { font-size: 19px; color: #546c70; margin-bottom: 8px; }
