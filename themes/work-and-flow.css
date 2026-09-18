@@ -23,12 +23,16 @@ strong, a { color: #14666c; }
 a { text-underline-offset: 6px; }
 
 section.title { justify-content: center; padding: 64px 96px; }
-section.title h1 { font-size: 64px; line-height: 1.5; max-width: 10em; text-wrap: balance; margin: 0 0 40px; }
+section.title h1 { font-size: 64px; line-height: 1.5; max-width: none; text-wrap: balance; margin: 0 0 40px; }
 section.title > p { color: #546c70; margin: 0; }
 
 .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
 .card { background: #fff; border: 1px solid #d8e1df; border-radius: 12px; padding: 24px 28px; }
 .card p { font-size: 19px; color: #546c70; }
+.interrupt { background: #e7eef9; border-color: #bdcde5; }
+.note { font-size: 20px; color: #546c70; border-top: 1px solid #d8e1df; margin-top: 16px; padding-top: 12px; }
+.note p { margin: 0; }
+.eyebrow { font-size: 20px; color: #546c70; margin: 0 0 12px; }
 .wait { background: #fff0d2; color: #745019; border-color: #e8cd96; }
 
 .flow { display: flex; align-items: center; gap: 12px; margin: 18px 0 28px; }
