@@ -31,11 +31,11 @@
   "author": "toku345",
   "license": "MIT",
   "engines": {
-    "bun": "1.4.2"
+    "bun": "1.4.4"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.5.13",
     "@marp-team/marp-cli": "^4.5.1",
-    "markdownlint-cli": "^0.49.1"
+    "markdownlint-cli": "^0.50.0"
   }
 }
