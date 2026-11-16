@@ -11,7 +11,9 @@
   "labels": ["dependencies", "renovate"],
   "prHourlyLimit": 5,
   "prConcurrentLimit": 5,
-  "dependencyDashboard": true,
+  "dependencyDashboard": {
+    "enabled": true
+  },
   "configMigration": true,
   "osvVulnerabilityAlerts": true,
   "vulnerabilityAlerts": {
